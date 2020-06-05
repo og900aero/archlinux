@@ -1,7 +1,7 @@
 #!/bin/bash
 
 loadkeys hu
-timdatectl set-ntp true
+timedatectl set-ntp true
 fdisk /dev/sda
 mkfs.fat -F32 /dev/sda1
 mkfs.ext4 /dev/sda2
