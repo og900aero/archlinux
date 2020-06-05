@@ -11,4 +11,16 @@ chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
 EDITOR=nvim visudo
+echo "localectl set keymap hu hu"
 localectl set-keymap hu hu
+sudo pacman -S --noconfirm xclip unrar curlftpfs fzf mediainfo bspwm sxhkd exa i3lock neovim xautolock awesome-terminal-fonts pulseaudio gpicview-gtk3 libreoffice-fresh transmission-gtk bind-tools wget traceroute gnome-calculator bash-completion intel-media-driver vifm ttf-roboto ttf-ubuntu-font-family pacman-contrib blueberry pcmanfm neofetch mpv chromium grsync htop git gimp ntfs-3g gnome-disk-utility android-tools gvfs udiskie rofi caprine
+systemctl --user enable pulseaudio
+sudo pacman -S pavucontrol --noconfirm
+systemctl enable bluetooth.service
+systemctl start bluetooth.service
+Rfkill unblock bluetooth
+sudo pacman -S pulseaudio-bluetooth
+sudo killall pulseaudio
+pulseaudo --start
+sudo systemctl restart bluetooth
+sudo usermod -a -G rfkill shyciii
