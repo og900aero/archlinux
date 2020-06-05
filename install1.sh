@@ -25,13 +25,7 @@ hwclock --systohc --utc
 mkinitcpio -p linux
 echo "Root jelszava:"
 passwd root
-echo "Shyciii user létrehozása"
-useradd -m -g users -G audio,video,network,wheel,storage -s /bin/bash shyciii
-echo "Shyciii jelszava:"
-passwd shyciii
 pacman -S networkmanager
 systemctl enable NetworkManager.service
-chown shyciii:users /mnt/home/Data
 exit
-umount /dev/sda1
-reboot
+
