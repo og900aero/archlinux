@@ -8,7 +8,7 @@ mkfs.ext4 /dev/sda2
 mount /dev/sda2 /mnt
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
-pacstrap /mnt base linux linux-firmware neovim
+pacstrap /mnt base linux linux-firmware neovim intel-ucode
 mkdir /mnt/home/Data
 mount /dev/sda3 /mnt/home/Data
 chmod 744 /mnt/home/Data
