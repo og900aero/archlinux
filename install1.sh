@@ -25,5 +25,7 @@ hwclock --systohc --utc
 mkinitcpio -p linux
 echo "Root jelszava:"
 passwd root
+pacman -S networkmanager
+systemctl enable NetworkManager.service
 exit
 
