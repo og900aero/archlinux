@@ -16,7 +16,8 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 bootctl --path=/boot install
 nvim /boot/loader/loader.conf
-echo "Title Arch Linux" > /boot/loader/entries/arch.conf && sed -i "/Title/a\linux /vmlinuz-linux\ninitrd /intel-ucode.img\ninitrd /initramfs-linux.img" /boot/loader/entries/arch.conf && echo "options root=PARTUUID=$(blkid | grep sda2 | sed 's/\(.*\)PARTUUID="\(.*\)"$/\2/') rw quit i915.enable_guc=2 loglevel=3" >> /boot/loader/entries/arch.conf
+echo -e "Title Arch Linux\nlinux /vmlinuz-linux\ninitrd /intel-ucode.img\ninitrd /initramfs-linux.img\noptions root=PARTUUID=$(blkid | grep sda2 | sed 's/\(.*\)PARTUUID="\(.*\)"$/\2/') rw quit i915.enable_guc=2 loglevel=3" > /boot/loader/entries/arch.conf
+echo -e "127.0.0.1  localhost\n::1  localhost\n127.0.0.1  archlinux" > /etc/hosts
 echo archlinux > /etc/hostname
 echo KEYMAP=hu > /etc/vconsole.conf
 echo LANG=en_US.UTF-8 > /etc/locale.conf
