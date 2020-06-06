@@ -2,7 +2,7 @@
 
 loadkeys hu
 pacman -Sy
-pacman -S reflector
+pacman -S --noconfirm reflector
 reflector --verbose --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
 timedatectl set-ntp true
 fdisk /dev/sda
@@ -23,8 +23,8 @@ echo -e "Title Arch Linux\nlinux /vmlinuz-linux\ninitrd /intel-ucode.img\ninitrd
 echo -e "127.0.0.1  localhost\n::1  localhost\n127.0.0.1  archlinux" > /etc/hosts
 echo archlinux > /etc/hostname
 echo KEYMAP=hu > /etc/vconsole.conf
-echo LANG=hu_HU.UTF-8 > /etc/locale.conf
-export LANG=hu_HU.UTF-8
+echo LANG=us_EN.UTF-8 > /etc/locale.conf
+export LANG=us_EN.UTF-8
 nvim /etc/locale.gen
 locale-gen
 rm /etc/localtime
@@ -39,3 +39,4 @@ echo "Shyciii user létrehozása"
 useradd -m -g users -G audio,video,network,wheel,storage -s /bin/bash shyciii
 echo "Shyciii jelszava:"
 passwd shyciii
+EDITOR=nvim visudo
