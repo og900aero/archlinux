@@ -35,7 +35,7 @@ makepkg -si
 cd ..
 rm -rf /home/shyciii/trizen
 sudo pacman -Syyu
-trizen -S --noconfirm fuse-zip jmtpfs ttf-ms-fonts polybar split2flac-git subversion sacd-extract inxi downgrade
+trizen -S --noconfirm fuse-zip jmtpfs polybar split2flac-git subversion sacd-extract inxi downgrade
 cd /home/Data/Linux/Compile/st-0.8.2
 make clean install
 
