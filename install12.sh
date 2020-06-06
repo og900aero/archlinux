@@ -19,7 +19,7 @@ passwd root
 pacman -S networkmanager
 systemctl enable NetworkManager.service
 echo "Shyciii user létrehozása"
-useradd -m -g users -G audio,video,network,wheel,storage -s /bin/bash shyciii
+useradd -m -g users -G audio,video,network,wheel,storage shyciii
 echo "Shyciii jelszava:"
 passwd shyciii
 EDITOR=nvim visudo
