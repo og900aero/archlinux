@@ -57,7 +57,7 @@ systemctl --user enable pulseaudio
 sudo pacman -S --noconfirm pavucontrol
 systemctl enable bluetooth.service
 systemctl start bluetooth.service
-rfkill unblock bluetooth
+sudo rfkill unblock bluetooth
 sudo pacman -S --noconfirm pulseaudio-bluetooth
 sudo killall pulseaudio
 pulseaudio --start
