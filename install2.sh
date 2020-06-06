@@ -47,7 +47,7 @@ echo "################################################################"
 echo "###  All cores will be used during building and compression ####"
 echo "################################################################"
 sudo pacman -S --noconfirm xorg-server xorg-xinit xterm
-chown shyciii:users /mnt/home/Data
+chown shyciii:users /home/Data
 fallocate -l 4096M /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
