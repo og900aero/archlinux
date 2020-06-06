@@ -10,8 +10,6 @@ fallocate -l 4096M /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
-echo "localectl set keymap hu hu"
-#localectl set-keymap hu hu
 sudo pacman -S --noconfirm xclip unrar curlftpfs fzf mediainfo bspwm sxhkd exa i3lock neovim xautolock awesome-terminal-fonts pulseaudio gpicview-gtk3 libreoffice-fresh transmission-gtk bind-tools wget traceroute gnome-calculator bash-completion intel-media-driver vifm ttf-roboto ttf-ubuntu-font-family pacman-contrib blueberry pcmanfm neofetch mpv chromium grsync htop git gimp ntfs-3g gnome-disk-utility android-tools gvfs udiskie rofi caprine
 EDITOR=nvim visudo
 systemctl --user enable pulseaudio
@@ -24,3 +22,22 @@ sudo killall pulseaudio
 pulseaudio --start
 sudo systemctl restart bluetooth
 sudo usermod -a -G rfkill shyciii
+cd /home/shyciii
+git clone https://aur.archlinux.org/trizen.git
+cd trizen
+makepkg -si
+cd ..
+rm -rf /home/shyciii/trizen
+sudo pacman -Syyu
+cd /home/shyciii
+git clone https://aur.archlinux.org/trizen.git
+cd trizen
+makepkg -si
+cd ..
+rm -rf /home/shyciii/trizen
+sudo pacman -Syyu
+trizen -S --noconfirm fuse-zip, jmtpfs, ttf-ms-fonts polybar split2flac-git sacd-extract inxi downgrade
+cd /home/Data/linux/Compile/st-0.8.2
+make clean install
+
+
