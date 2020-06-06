@@ -82,4 +82,4 @@ cd /home/Data/Linux/Compile/st-0.8.2
 make clean install
 sudo mkdir /etc/pacman.d/hooks
 sudo cp /home/Data/Linux/Backup/etc/pacman.d/hooks/clean_package_cache.hook /etc/pacman.d/hooks/clean_package_cache.hook
-sudo cp /home/Data/Linux/Backup/usr/share/themes/ /usr/share/themes/
+sudo cp -r /home/Data/Linux/Backup/usr/share/themes/* /usr/share/themes/
