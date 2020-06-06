@@ -4,7 +4,7 @@
 #useradd -m -g users -G audio,video,network,wheel,storage -s /bin/bash shyciii
 #echo "Shyciii jelszava:"
 #passwd shyciii
-pacman -S --noconfirm xorg-server xorg-xinit xterm
+sudo pacman -S --noconfirm xorg-server xorg-xinit xterm
 chown shyciii:users /mnt/home/Data
 fallocate -l 4096M /swapfile
 chmod 600 /swapfile
