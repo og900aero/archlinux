@@ -46,7 +46,7 @@ esac
 echo "################################################################"
 echo "###  All cores will be used during building and compression ####"
 echo "################################################################"
-sudo pacman -S --noconfirm xorg-server xorg-xinit xterm
+sudo pacman -S --noconfirm xorg-server xorg-xinit xterm mesa xf86-video-intel
 sudo chown shyciii:users /home/Data
 sudo fallocate -l 4096M /swapfile
 sudo chmod 600 /swapfile
@@ -57,11 +57,10 @@ systemctl --user enable pulseaudio
 sudo pacman -S --noconfirm pavucontrol
 systemctl enable bluetooth.service
 systemctl start bluetooth.service
-sudo rfkill unblock bluetooth
+rfkill unblock bluetooth
 sudo pacman -S --noconfirm pulseaudio-bluetooth
 pulseaudio --start
 sudo systemctl restart bluetooth
-sudo usermod -a -G rfkill shyciii
 cd /home/shyciii
 git clone https://aur.archlinux.org/trizen.git
 cd trizen
