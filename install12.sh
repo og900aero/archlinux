@@ -16,7 +16,7 @@ hwclock --systohc --utc
 mkinitcpio -p linux
 echo "Root jelszava:"
 passwd root
-pacman -S networkmanager
+pacman -S --noconfirm networkmanager
 systemctl enable NetworkManager.service
 echo "Shyciii user létrehozása"
 useradd -m -g users -G audio,video,network,wheel,storage shyciii
