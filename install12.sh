@@ -16,10 +16,10 @@ hwclock --systohc --utc
 mkinitcpio -p linux
 echo "Root jelszava:"
 passwd root
-pacman -S --noconfirm networkmanager
+pacman -S --noconfirm networkmanager network-manager-applet
 systemctl enable NetworkManager.service
 echo "Shyciii user létrehozása"
-useradd -m -g users -G audio,video,network,wheel,storage shyciii
+useradd -m -g users -G audio,video,network,wheel,storage,rfkill shyciii
 echo "Shyciii jelszava:"
 passwd shyciii
 EDITOR=nvim visudo
