@@ -86,5 +86,5 @@ sudo cp -rfv /home/Data/Linux/Backup/home/.config/* /home/shyciii/.config
 sudo cp -rfv /home/Data/Linux/Backup/home/.local/ /home/shyciii/
 sudo cp -rfv /home/Data/Linux/Backup/home/mnt /home/shyciii/
 sudo cp -rfv /home/Data/Linux/Backup/home/Pictures /home/shyciii/
-sudo cp -fv /home/Data/Linux/Backup/home/.b*.* /home/Data/Linux/Backup/home/.g*.* /home/Data/Linux/Backup/home/x*.* /home/shyciii/
+sudo cp -fv /home/Data/Linux/Backup/home/.b*.* /home/Data/Linux/Backup/home/.g*.* /home/Data/Linux/Backup/home/.x*.* /home/shyciii/
 sudo cp -fv /home/Data/Linux/Arch_egyeb/mousepad_double_tap/etc/X11/xorg.conf.d/* /etc/X11/xorg.conf.d/
