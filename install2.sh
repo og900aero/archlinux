@@ -84,6 +84,7 @@ sudo cp -rfv /home/Data/Linux/Backup/etc/systemd/* /etc/systemd/
 sudo cp -rv /home/Data/Linux/Backup/usr/share/themes/* /usr/share/themes/
 sudo cp -rfv /home/Data/Linux/Backup/home/.config/* /home/shyciii/.config
 sudo cp -rfv /home/Data/Linux/Backup/home/.local/ /home/shyciii/
+sudo cp -rfv /home/Data/Linux/Backup/home/.grsync/ /home/shyciii/
 sudo cp -rfv /home/Data/Linux/Backup/home/mnt /home/shyciii/
 sudo cp -rfv /home/Data/Linux/Backup/home/Pictures /home/shyciii/
 sudo cp -fv /home/Data/Linux/Backup/home/.b* /home/Data/Linux/Backup/home/.g* /home/Data/Linux/Backup/home/.x* /home/shyciii/
