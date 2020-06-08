@@ -53,12 +53,11 @@ sudo fallocate -l 4096M /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
-# Bluetooth
+# Sound, Bluetooth
+sudo pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
 systemctl enable bluetooth.service
 systemctl start bluetooth.service
 rfkill unblock bluetooth
-# Sound
-sudo pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
 systemctl --user enable pulseaudio
 pulseaudio --start
 sudo systemctl restart bluetooth
