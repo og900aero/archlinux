@@ -62,7 +62,7 @@ systemctl --user enable pulseaudio
 pulseaudio --start
 sudo systemctl restart bluetooth
 # Custom programs, fonts etc
-sudo pacman -S --noconfirm xclip unrar curlftpfs fzf mediainfo bspwm sxhkd exa i3lock neovim xautolock dunst awesome-terminal-fonts gpicview-gtk3 libreoffice-fresh transmission-gtk bind-tools wget traceroute gnome-calculator bash-completion intel-media-driver vifm ttf-roboto ttf-ubuntu-font-family pacman-contrib blueberry pcmanfm neofetch mpv chromium grsync htop git gimp ntfs-3g gnome-disk-utility android-tools gnome-keyring ttf-dejavu xdg-user-dirs xorg-fonts-encoding xorg-mkfontscale linux-headers polkit-gnome sshfs gvfs udiskie rofi caprine
+sudo pacman -S --noconfirm xclip unrar curlftpfs fzf mediainfo bspwm sxhkd exa i3lock neovim xautolock dunst awesome-terminal-fonts gpicview-gtk3 libreoffice-fresh transmission-gtk bind-tools wget traceroute gnome-calculator bash-completion intel-media-driver vifm ttf-roboto ttf-ubuntu-font-family pacman-contrib blueberry pcmanfm neofetch mpv chromium grsync htop git gimp ntfs-3g gnome-disk-utility android-tools gnome-keyring ttf-dejavu xdg-user-dirs xorg-fonts-encoding xorg-mkfontscale linux-headers reflector polkit-gnome sshfs gvfs udiskie rofi caprine
 # Trizen install
 cd /home/shyciii
 git clone https://aur.archlinux.org/trizen.git
