@@ -76,11 +76,11 @@ sudo cp /home/Data/Linux/Backup/etc/pacman.d/hooks/clean_package_cache.hook /etc
 sudo cp -rv /home/Data/Linux/Backup/etc/sysctl.d/* /etc/sysctl.d/
 sudo cp -rfv /home/Data/Linux/Backup/etc/systemd/* /etc/systemd/
 sudo cp -rv /home/Data/Linux/Backup/usr/share/themes/* /usr/share/themes/
-sudo cp -rfv /home/Data/Linux/Backup/home/.config/* /home/shyciii/.config
-sudo cp -rfv /home/Data/Linux/Backup/home/.local/ /home/shyciii/
-sudo cp -rfv /home/Data/Linux/Backup/home/.grsync/ /home/shyciii/
-sudo cp -rfv /home/Data/Linux/Backup/home/mnt /home/shyciii/
-sudo cp -rfv /home/Data/Linux/Backup/home/Pictures /home/shyciii/
-sudo cp -fv /home/Data/Linux/Backup/home/.b* /home/Data/Linux/Backup/home/.g* /home/Data/Linux/Backup/home/.x* /home/shyciii/
+cp -rfv /home/Data/Linux/Backup/home/.config/* /home/shyciii/.config
+cp -rfv /home/Data/Linux/Backup/home/.local/ /home/shyciii/
+cp -rfv /home/Data/Linux/Backup/home/.grsync/ /home/shyciii/
+cp -rfv /home/Data/Linux/Backup/home/mnt /home/shyciii/
+cp -rfv /home/Data/Linux/Backup/home/Pictures /home/shyciii/
+cp -fv /home/Data/Linux/Backup/home/.b* /home/Data/Linux/Backup/home/.g* /home/Data/Linux/Backup/home/.x* /home/shyciii/
 sudo cp -fv /home/Data/Linux/Arch_egyeb/mousepad_double_tap/etc/X11/xorg.conf.d/* /etc/X11/xorg.conf.d/
 sudo chown -R shyciii:users /home/shyciii/
