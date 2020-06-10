@@ -48,11 +48,6 @@ esac
 sudo pacman -S --noconfirm xorg-server xorg-xinit xterm mesa xf86-video-intel
 # Egyeb
 sudo chown shyciii:users /home/Data
-# Swap file
-sudo fallocate -l 4096M /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
 # Sound, Bluetooth
 sudo pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
 systemctl enable bluetooth.service
@@ -68,7 +63,6 @@ cd /home/shyciii
 git clone https://aur.archlinux.org/trizen.git
 cd trizen
 makepkg -si
-cd ..
 rm -rf /home/shyciii/trizen
 sudo pacman -Syyu
 # Install AUR programs
