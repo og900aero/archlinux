@@ -24,3 +24,8 @@ useradd -m -g users -G audio,video,network,wheel,storage,rfkill shyciii
 echo "Shyciii jelszava:"
 passwd shyciii
 EDITOR=nvim visudo
+# Swap file
+sudo fallocate -l 4096M /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
