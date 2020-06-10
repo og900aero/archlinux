@@ -1,2 +1,2 @@
 # archlinux
-Custom Arch Linux with Openbox
+Custom Arch Linux with Bspwm
