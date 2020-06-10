@@ -66,7 +66,7 @@ makepkg -si
 rm -rf /home/shyciii/trizen
 sudo pacman -Syyu
 # Install AUR programs
-trizen -S --noconfirm fuse-zip jmtpfs polybar split2flac-git subversion sacd-extract inxi downgrade
+trizen -S --noconfirm --sudo-autorepeat-at-runtime fuse-zip jmtpfs polybar split2flac-git subversion sacd-extract inxi downgrade
 # Install Suckless Terminal
 cd /home/Data/Linux/Compile/st-0.8.2
 sudo make clean install
