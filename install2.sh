@@ -15,6 +15,7 @@ locale-gen
 rm /etc/localtime
 ln -s /usr/share/zoneinfo/Europe/Budapest /etc/localtime
 hwclock --systohc --utc
+timedatectl set-ntp true
 # Network
 pacman -S --noconfirm networkmanager network-manager-applet
 systemctl enable NetworkManager.service
