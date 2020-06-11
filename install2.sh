@@ -9,6 +9,7 @@ echo archlinux > /etc/hostname
 echo KEYMAP=hu > /etc/vconsole.conf
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 export LANG=en_US.UTF-8
+echo "en_US.UTF-8 UTF-8" >> locale.gen
 nvim /etc/locale.gen
 locale-gen
 rm /etc/localtime
@@ -17,18 +18,20 @@ hwclock --systohc --utc
 mkinitcpio -p linux
 echo "Root jelszava:"
 passwd root
-pacman -S --noconfirm networkmanager network-manager-applet
-systemctl enable NetworkManager.service
-echo "Shyciii user létrehozása"
-useradd -m -g users -G audio,video,network,wheel,storage,rfkill shyciii
-echo "Shyciii jelszava:"
-passwd shyciii
-EDITOR=nvim visudo
 # Swap file
 sudo fallocate -l 4096M /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
+# Network
+pacman -S --noconfirm networkmanager network-manager-applet
+systemctl enable NetworkManager.service
+# User
+echo "Shyciii user létrehozása"
+useradd -m -g users -G audio,video,network,wheel,storage,rfkill shyciii
+echo "Shyciii jelszava:"
+passwd shyciii
+EDITOR=nvim visudo
 echo "###########################################################################"
 echo "Alábbi parancsokat kell kiadni, mielőtt az Install3.sh scriptet lefuttatod:"
 echo "exit, umount -R /dev/sda, reboot"
