@@ -12,7 +12,7 @@ mkfs.f2fs /dev/sda2
 mount /dev/sda2 /mnt
 mkdir -p /mnt/boot
 mount /dev/sda1 /mnt/boot
-pacstrap /mnt base base-devel linux linux-firmware linux-headers neovim intel-ucode f2fs-tools
+pacstrap /mnt base base-devel linux linux-firmware linux-headers neovim intel-ucode f2fs-tools sudo
 mkdir /mnt/home/Data
 mount /dev/sda3 /mnt/home/Data
 chmod 777 /mnt/home/Data
