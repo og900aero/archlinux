@@ -9,7 +9,7 @@ echo archlinux > /etc/hostname
 echo KEYMAP=hu > /etc/vconsole.conf
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 export LANG=en_US.UTF-8
-echo "en_US.UTF-8 UTF-8" >> locale.gen
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 nvim /etc/locale.gen
 locale-gen
 rm /etc/localtime
@@ -23,15 +23,23 @@ sudo fallocate -l 4096M /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
+sudo echo "/swapfile   none  swap  defaults,discard  0	0" >> /etc/fstab
 # Network
 pacman -S --noconfirm networkmanager network-manager-applet
 systemctl enable NetworkManager.service
 # User
+pacman -S --noconfirm sudo
 echo "Shyciii user létrehozása"
 useradd -m -g users -G audio,video,network,wheel,storage,rfkill shyciii
 echo "Shyciii jelszava:"
 passwd shyciii
 EDITOR=nvim visudo
+# Xorg
+sudo pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encoding xorg-mkfontscale xterm mesa xf86-video-intel
+# Install fonts, home dirs etc
+sudo pacman -S --noconfirm xdg-user-dirs bind-tools wget traceroute man-db man-pages intel-media-driver pacman-contrib bash-completion android-tools gvfs udiskie wesome-terminal-fonts ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
+# Install Sound
+sudo pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
 echo "###########################################################################"
 echo "Alábbi parancsokat kell kiadni, mielőtt az Install3.sh scriptet lefuttatod:"
 echo "exit, umount -R /dev/sda, reboot"
