@@ -15,18 +15,19 @@ locale-gen
 rm /etc/localtime
 ln -s /usr/share/zoneinfo/Europe/Budapest /etc/localtime
 hwclock --systohc --utc
+# Network
+pacman -S --noconfirm networkmanager network-manager-applet
+systemctl enable NetworkManager.service
 mkinitcpio -p linux
 echo "Root jelszava:"
 passwd root
+# Esetleg innen jöhet a kilépés reboot és rootként belépés
 # Swap file
 sudo fallocate -l 4096M /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
 sudo echo "/swapfile   none  swap  defaults,discard  0	0" >> /etc/fstab
-# Network
-pacman -S --noconfirm networkmanager network-manager-applet
-systemctl enable NetworkManager.service
 # User
 echo "Shyciii user létrehozása"
 useradd -m -g users -G audio,video,network,wheel,storage,rfkill shyciii
