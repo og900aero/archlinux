@@ -44,20 +44,17 @@ case $numberofcores in
         echo "Do it manually."
         ;;
 esac
-# Xorg
-sudo pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encoding xorg-mkfontscale xterm mesa xf86-video-intel
 # Egyeb
 sudo chown shyciii:users /home/Data
 # Sound, Bluetooth
-sudo pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
 systemctl enable bluetooth.service
 systemctl start bluetooth.service
 rfkill unblock bluetooth
 systemctl --user enable pulseaudio
 pulseaudio --start
 sudo systemctl restart bluetooth
-# Custom programs, fonts etc
-sudo pacman -S --noconfirm xdg-user-dirs xclip unrar curlftpfs fzf mediainfo bspwm sxhkd exa i3lock neovim xautolock dunst awesome-terminal-fonts gpicview-gtk3 libreoffice-fresh-hu transmission-gtk bind-tools wget traceroute gnome-calculator bash-completion intel-media-driver vifm ttf-roboto ttf-ubuntu-font-family pacman-contrib blueberry pcmanfm neofetch mpv chromium grsync htop git gimp ntfs-3g gnome-disk-utility android-tools gnome-keyring ttf-dejavu reflector polkit-gnome sshfs gvfs udiskie rofi caprine
+# Install programs
+sudo pacman -S --noconfirm xclip unrar curlftpfs fzf mediainfo bspwm sxhkd exa i3lock neovim xautolock dunst gpicview-gtk3 libreoffice-fresh-hu transmission-gtk gnome-calculator vifm blueberry pcmanfm neofetch mpv chromium grsync htop gimp gnome-disk-utility sshfs rofi caprine
 # Trizen install
 cd /home/shyciii
 git clone https://aur.archlinux.org/trizen.git
