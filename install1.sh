@@ -10,7 +10,7 @@ mkfs.fat -F32 /dev/sda1
 #mkfs.ext4 /dev/sda2
 mkfs.f2fs /dev/sda2
 mount /dev/sda2 /mnt
-mkdir /mnt/boot
+mkdir -p /mnt/boot
 mount /dev/sda1 /mnt/boot
 pacstrap /mnt base base-devel linux linux-firmware linux-headers neovim intel-ucode
 mkdir /mnt/home/Data
