@@ -29,3 +29,8 @@ sudo fallocate -l 4096M /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
+echo "###########################################################################"
+echo "Alábbi parancsokat kell kiadni, mielőtt az Install3.sh scriptet lefuttatod:"
+echo "exit, umount -R /dev/sda, reboot"
+echo "Ezután root felhasználóval lépj be, és mehet az Install3.sh script.
+echo "###########################################################################"
