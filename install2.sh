@@ -28,7 +28,6 @@ sudo echo "/swapfile   none  swap  defaults,discard  0	0" >> /etc/fstab
 pacman -S --noconfirm networkmanager network-manager-applet
 systemctl enable NetworkManager.service
 # User
-pacman -S --noconfirm sudo
 echo "Shyciii user létrehozása"
 useradd -m -g users -G audio,video,network,wheel,storage,rfkill shyciii
 echo "Shyciii jelszava:"
@@ -43,5 +42,5 @@ sudo pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
 echo "###########################################################################"
 echo "Alábbi parancsokat kell kiadni, mielőtt az Install3.sh scriptet lefuttatod:"
 echo "exit, umount -R /dev/sda, reboot"
-echo "Ezután root felhasználóval lépj be, és mehet az Install3.sh script.
+echo "Ezután shyciii felhasználóval lépj be, és mehet az Install3.sh script.
 echo "###########################################################################"
