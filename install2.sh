@@ -15,7 +15,7 @@ ln -s /usr/share/zoneinfo/Europe/Budapest /etc/localtime
 hwclock --systohc --utc
 timedatectl set-ntp true
 # Network
-pacman -S --noconfirm networkmanager network-manager-applet
+pacman -S --noconfirm networkmanager network-manager-applet networkmanager-openvpn
 systemctl enable NetworkManager.service
 mkinitcpio -p linux
 echo "Root jelszava:"
