@@ -37,7 +37,7 @@ echo "Shyciii jelszava:"
 passwd shyciii
 EDITOR=nvim visudo
 # Xorg
-sudo pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encoding xorg-mkfontscale xterm mesa xf86-video-intel
+sudo pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encodings xorg-mkfontscale xterm mesa xf86-video-intel
 # Install fonts, home dirs etc
 sudo pacman -S --noconfirm xdg-user-dirs bind-tools wget traceroute man-db man-pages intel-media-driver pacman-contrib bash-completion android-tools gvfs udiskie wesome-terminal-fonts ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
 # Install Sound
