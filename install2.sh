@@ -43,7 +43,7 @@ sudo pacman -S --noconfirm xdg-user-dirs git bind-tools wget traceroute man-db m
 # Install Sound
 sudo pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
 echo "###########################################################################"
-echo "Alábbi parancsokat kell kiadni, mielőtt az Install3.sh scriptet lefuttatod:"
-echo "exit, umount -R /dev/sda, reboot"
+echo "Alábbi parancsokat kell kiadni, mielőtt az install3.sh scriptet lefuttatod:"
+echo "exit, reboot"
 echo "Ezután shyciii felhasználóval lépj be, és mehet az Install3.sh script."
 echo "###########################################################################"
