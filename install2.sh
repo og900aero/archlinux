@@ -1,7 +1,7 @@
 #!/bin/bash
 
 bootctl --path=/boot install
-echo -e "default arch\ntimeout 1\neditor 1" > /boot/loader/loader.conf
+echo -e "default arch\ntimeout 1\neditor yes" > /boot/loader/loader.conf
 #nvim /boot/loader/loader.conf
 echo -e "Title Arch Linux\nlinux /vmlinuz-linux\ninitrd /intel-ucode.img\ninitrd /initramfs-linux.img\noptions root=PARTUUID=$(blkid | grep sda2 | sed 's/\(.*\)PARTUUID="\(.*\)"$/\2/') rw quit i915.enable_guc=2 loglevel=3" > /boot/loader/entries/arch.conf
 echo -e "127.0.0.1  localhost\n::1  localhost\n127.0.0.1  archlinux" > /etc/hosts
