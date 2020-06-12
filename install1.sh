@@ -19,6 +19,6 @@ genfstab -U /mnt >> /mnt/etc/fstab
 cd ..
 cp -r archlinux/ /mnt/home/
 echo "###############################################"
-echo "cd /home/archlinux és Install2.sh-t futtasd le"
+echo "cd /home/archlinux és install2.sh-t futtasd le"
 echo "###############################################"
 arch-chroot /mnt
