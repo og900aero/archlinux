@@ -81,4 +81,6 @@ cp -rfv /home/Data/Linux/Backup/home/Pictures /home/shyciii/
 cp -fv /home/Data/Linux/Backup/home/.b* /home/Data/Linux/Backup/home/.gt* /home/Data/Linux/Backup/home/.x* /home/shyciii/
 sudo cp -fv /home/Data/Linux/Arch_egyeb/mousepad_double_tap/etc/X11/xorg.conf.d/* /etc/X11/xorg.conf.d/
 sudo chown -R shyciii:users /home/shyciii/
+# Céges VPN beállítása
+sudo nmcli connection import type openvpn file /path/to/your.ovpn
 cd .. && rm -rf /home/archlinux
