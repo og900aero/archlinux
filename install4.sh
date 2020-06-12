@@ -54,7 +54,7 @@ systemctl --user enable pulseaudio
 pulseaudio --start
 sudo systemctl restart bluetooth
 # Install programs
-sudo pacman -S --noconfirm xclip unrar curlftpfs fzf mediainfo bspwm sxhkd exa i3lock neovim xautolock dunst gpicview-gtk3 libreoffice-fresh-hu transmission-gtk gnome-calculator vifm blueberry pcmanfm neofetch mpv chromium grsync htop gimp gnome-disk-utility sshfs rofi caprine
+sudo pacman -S --noconfirm xclip unrar curlftpfs fzf git mediainfo bspwm sxhkd exa i3lock neovim xautolock dunst gpicview-gtk3 libreoffice-fresh-hu transmission-gtk gnome-calculator vifm blueberry pcmanfm neofetch mpv chromium grsync htop gimp gnome-disk-utility sshfs rofi caprine
 # Trizen install
 cd /home/shyciii
 git clone https://aur.archlinux.org/trizen.git
