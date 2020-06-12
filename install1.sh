@@ -16,6 +16,8 @@ mkdir /mnt/home/Data
 mount /dev/sda3 /mnt/home/Data
 chmod 777 /mnt/home/Data
 genfstab -U /mnt >> /mnt/etc/fstab
+cd ..
+cp -r archlinux/ /mnt/home/
 echo "###############################################"
 echo "Töltsd le az Install2.sh scriptet és futtasd le"
 echo "###############################################"
