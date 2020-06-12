@@ -17,7 +17,7 @@ sudo pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encodings xorg-mkfo
 # Install fonts, home dirs etc
 #sudo pacman -S --noconfirm xdg-user-dirs git bind-tools wget traceroute man-db man-pages intel-media-driver pacman-contrib bash-completion android-tools gvfs udiskie awesome-terminal-fonts ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
 # Install Sound
-#sudo pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
+sudo pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
 echo "############################################################################"
 echo "Reboot, majd shyciii felhasználóval lépj be, és mehet az Install4.sh script."
 echo "############################################################################"
