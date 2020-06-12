@@ -24,7 +24,8 @@ echo "Root jelszava:"
 passwd root
 # Esetleg innen jöhet a kilépés reboot és rootként belépés
 # Swap file
-sudo fallocate -l 4096M /swapfile
+#sudo fallocate -l 4096M /swapfile
+sudo dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
