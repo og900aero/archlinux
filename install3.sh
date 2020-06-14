@@ -1,4 +1,4 @@
-#!/bin/bash --init-file
+#!/bin/bash
 
 # Compile using all cores
 set -e
