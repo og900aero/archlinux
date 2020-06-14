@@ -1,8 +1,5 @@
 #!/bin/bash
 
-set -uo pipefail
-trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
-
 loadkeys hu
 pacman -Sy
 pacman -S --noconfirm reflector
