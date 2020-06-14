@@ -58,7 +58,7 @@ arch-chroot /mnt mkswap /swapfile
 arch-chroot /mnt swapon /swapfile
 echo "/swapfile   none  swap  defaults,discard  0	0" >> /mnt/etc/fstab
 # Xorg
-arch-chroot /mnt pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encodings xorg-mkfontscale xterm mesa xf86-video-intel
+arch-chroot /mnt pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encodings xorg-mkfontscale xterm mesa xf86-video-intel xf86-video-nouveau
 # Install fonts, home dirs etc
 arch-chroot /mnt pacman -S --noconfirm xdg-user-dirs git bind-tools wget traceroute man-db man-pages intel-media-driver pacman-contrib bash-completion android-tools gvfs udiskie awesome-terminal-fonts ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
 # Install Sound
