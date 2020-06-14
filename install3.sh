@@ -67,6 +67,8 @@ trizen -S -v --noconfirm --sudo-autorepeat-at-runtime fuse-zip jmtpfs polybar sp
 # Install Suckless Terminal
 cd /home/Data/Linux/Compile/st-0.8.2
 sudo make clean install
+# Remove orphans packages
+sudo pacman -Rns $(pacman -Qtdq)
 # Copy own config
 sudo mkdir /etc/pacman.d/hooks
 sudo cp /home/Data/Linux/Backup/etc/pacman.d/hooks/clean_package_cache.hook /etc/pacman.d/hooks/clean_package_cache.hook
