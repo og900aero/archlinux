@@ -5,9 +5,7 @@ pacman -Sy --noconfirm git
 
 git clone https://github.com/og900aero/archlinux
 
-cd archlinux
 
-sh install.sh
 
 #curl -L https://git.io/JfQVy | bash
 
