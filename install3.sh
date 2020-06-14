@@ -76,7 +76,7 @@ sudo cp -rv /home/Data/Linux/Backup/usr/share/themes/* /usr/share/themes/
 cp -rfv /home/Data/Linux/Backup/home/.config/* /home/shyciii/.config
 cp -rfv /home/Data/Linux/Backup/home/.local/ /home/shyciii/
 cp -rfv /home/Data/Linux/Backup/home/.grsync/ /home/shyciii/
-cp -rfv /home/Data/Linux/Backup/home/mt /home/shyciii/
+mkdir /home/shyciii/mtp
 cp -rfv /home/Data/Linux/Backup/home/Pictures /home/shyciii/
 cp -fv /home/Data/Linux/Backup/home/.b* /home/Data/Linux/Backup/home/.gt* /home/Data/Linux/Backup/home/.x* /home/shyciii/
 sudo cp -fv /home/Data/Linux/Arch_egyeb/mousepad_double_tap/etc/X11/xorg.conf.d/* /etc/X11/xorg.conf.d/
