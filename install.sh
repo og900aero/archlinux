@@ -62,8 +62,10 @@ arch-chroot /mnt pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encodin
 arch-chroot /mnt pacman -S --noconfirm xdg-user-dirs git bind-tools wget traceroute man-db man-pages intel-media-driver pacman-contrib bash-completion android-tools gvfs udiskie awesome-terminal-fonts ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
 # Install Sound
 arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
+cd ..
+cp -r archlinux/ /mnt/home/
 echo "###########################################################################"
 echo "Alábbi parancsokat kell kiadni, mielőtt az install3.sh scriptet lefuttatod:"
-echo "exit, reboot"
+echo "reboot"
 echo "Ezután shyciii felhasználóval lépj be, és mehet az Install3.sh script."
 echo "###########################################################################"
