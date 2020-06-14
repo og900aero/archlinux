@@ -65,6 +65,10 @@ arch-chroot /mnt pacman -S --noconfirm xdg-user-dirs git bind-tools wget tracero
 arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
 cd ..
 cp -r archlinux/ /mnt/home/
+echo "Alábbi parancsokat kell kiadnod: EDITOR=nvim visudo, majd exit"
+arch-chroot /mnt
+EDITOR=nvim visudo
+reboot
 echo "###########################################################################"
 echo "Alábbi parancsokat kell kiadni, mielőtt az install3.sh scriptet lefuttatod:"
 echo "reboot"
