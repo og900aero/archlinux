@@ -67,7 +67,6 @@ cd ..
 cp -r archlinux/ /mnt/home/
 echo "Alábbi parancsokat kell kiadnod: EDITOR=nvim visudo, majd exit"
 arch-chroot /mnt
-EDITOR=nvim visudo
 reboot
 echo "###########################################################################"
 echo "Alábbi parancsokat kell kiadni, mielőtt az install3.sh scriptet lefuttatod:"
