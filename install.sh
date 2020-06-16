@@ -69,7 +69,7 @@ echo "Alábbi parancsokat kell kiadnod: EDITOR=nvim visudo, majd exit"
 arch-chroot /mnt
 reboot
 echo "###########################################################################"
-echo "Alábbi parancsokat kell kiadni, mielőtt az install3.sh scriptet lefuttatod:"
+echo "Alábbi parancsokat kell kiadni, mielőtt az install2.sh scriptet lefuttatod:"
 echo "reboot"
 echo "Ezután shyciii felhasználóval lépj be, és mehet az Install3.sh script."
 echo "###########################################################################"
