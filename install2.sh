@@ -71,7 +71,7 @@ yay -Syyu --noconfirm --sudoloop fuse-zip jmtpfs polybar split2flac-git subversi
 cd /home/Data/Linux/Compile/st-0.8.2
 sudo make clean install
 # Remove orphans packages
-sudo pacman -Rns $(pacman -Qtdq)
+sudo pacman -Rns --noconfirm $(pacman -Qtdq)
 # Copy own config
 sudo mkdir /etc/pacman.d/hooks
 sudo cp /home/Data/Linux/Backup/etc/pacman.d/hooks/clean_package_cache.hook /etc/pacman.d/hooks/clean_package_cache.hook
@@ -89,4 +89,4 @@ sudo chown -R shyciii:users /home/shyciii/
 # Céges VPN beállítása
 sudo nmcli connection import type openvpn file /home/Data/_TMVPN/TelemediaOVPN.ovpn
 cd .. && sudo rm -rf /home/archlinux
-sudo pacman -Rsn nano
+sudo pacman -Rsn --noconfirm nano
