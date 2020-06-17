@@ -50,7 +50,6 @@ echo "Shyciii user létrehozása"
 arch-chroot /mnt useradd -m -g users -G audio,video,network,wheel,storage,rfkill shyciii
 echo "Shyciii jelszava:"
 arch-chroot /mnt passwd shyciii
-arch-chroot /mnt EDITOR=nvim visudo
 # Swap file
 arch-chroot /mnt dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
 arch-chroot /mnt chmod 600 /swapfile
