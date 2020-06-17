@@ -65,7 +65,9 @@ arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetoo
 cd ..
 cp -r archlinux/ /mnt/home/
 #echo "Alábbi parancsokat kell kiadnod: EDITOR=nvim visudo, majd exit"
+arch-chroot /mnt pacman -S --noconfirm vi
 arch-chroot /mnt visudo
+arch-chroot /mnt pacman -Rsn --noconfirm vi
 reboot
 echo "###########################################################################"
 echo "Alábbi parancsokat kell kiadni, mielőtt az install2.sh scriptet lefuttatod:"
