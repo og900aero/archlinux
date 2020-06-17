@@ -89,4 +89,3 @@ sudo chown -R shyciii:users /home/shyciii/
 # Céges VPN beállítása
 sudo nmcli connection import type openvpn file /home/Data/_TMVPN/TelemediaOVPN.ovpn
 cd .. && sudo rm -rf /home/archlinux
-sudo pacman -Rsn --noconfirm nano
