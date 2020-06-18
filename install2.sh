@@ -72,6 +72,7 @@ cd /home/Data/Linux/Compile/st-0.8.2
 sudo make clean install
 # Remove orphans packages
 sudo pacman -Rns --noconfirm $(pacman -Qtdq)
+yay -Rsn --noconfirm --sudoloop go
 # Copy own config
 sudo mkdir /etc/pacman.d/hooks
 sudo cp /home/Data/Linux/Backup/etc/pacman.d/hooks/clean_package_cache.hook /etc/pacman.d/hooks/clean_package_cache.hook
