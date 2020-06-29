@@ -70,7 +70,5 @@ arch-chroot /mnt visudo
 arch-chroot /mnt pacman -Rsn --noconfirm vim
 reboot
 echo "###########################################################################"
-echo "Alábbi parancsokat kell kiadni, mielőtt az install2.sh scriptet lefuttatod:"
-echo "reboot"
-echo "Ezután shyciii felhasználóval lépj be, és mehet az Install3.sh script."
+echo "shyciii felhasználóval lépj be, és mehet az Install2.sh script."
 echo "###########################################################################"
