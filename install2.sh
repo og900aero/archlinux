@@ -60,10 +60,8 @@ cd /home/shyciii
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-#rm -rf /home/shyciii/trizen
 rm -rf /home/shyciii/yay
 # Install AUR programs
-#trizen -S -v --noconfirm fuse-zip jmtpfs polybar split2flac-git subversion sacd-extract inxi downgrade
 yay -Syyu --noconfirm --sudoloop fuse-zip jmtpfs polybar split2flac-git subversion sacd-extract inxi downgrade
 # Install Suckless Terminal
 cd /home/Data/Linux/Compile/st-0.8.4
