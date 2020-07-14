@@ -12,7 +12,7 @@ mount /dev/sda2 /mnt
 mkdir -p /mnt/boot
 mount /dev/sda1 /mnt/boot
 pacstrap /mnt base base-devel linux linux-firmware neovim intel-ucode
-mkdir /mnt/home/Data
+mkdir -p /mnt/home/Data
 mount /dev/sda3 /mnt/home/Data
 chmod 777 /mnt/home/Data
 genfstab -U /mnt >> /mnt/etc/fstab
