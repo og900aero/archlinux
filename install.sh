@@ -64,7 +64,7 @@ arch-chroot /mnt pacman -S --noconfirm xdg-user-dirs bind-tools wget traceroute 
 arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
 cd ..
 cp -r archlinux/ /mnt/home/
-#echo "Alábbi parancsokat kell kiadnod: EDITOR=nvim visudo, majd exit"
+# Edit sudoers
 arch-chroot /mnt pacman -S --noconfirm vim
 arch-chroot /mnt visudo
 arch-chroot /mnt pacman -Rsn --noconfirm vim
