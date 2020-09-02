@@ -38,7 +38,7 @@ echo "en_US.UTF-8 UTF-8" >> /mnt/etc/locale.gen
 arch-chroot /mnt locale-gen
 arch-chroot /mnt rm /etc/localtime
 arch-chroot /mnt ln -s /usr/share/zoneinfo/Europe/Budapest /mnt/etc/localtime
-arch-chroot /mnt hwclock --systohc --utc
+arch-chroot /mnt hwclock --systohc
 arch-chroot /mnt echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf
 # Network
 arch-chroot /mnt pacman -S --noconfirm networkmanager network-manager-applet networkmanager-openvpn
