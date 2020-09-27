@@ -54,7 +54,7 @@ systemctl --user enable pulseaudio
 pulseaudio --start
 sudo systemctl restart bluetooth
 # Install programs
-sudo pacman -S --noconfirm xclip unrar curlftpfs fzf git mediainfo bspwm sxhkd exa i3lock neovim xautolock dunst gpicview-gtk3 libreoffice-fresh-hu transmission-gtk gnome-calculator vifm blueberry pcmanfm neofetch mpv chromium grsync htop gnome-disk-utility sshfs rofi caprine
+sudo pacman -S --noconfirm xclip unrar curlftpfs fzf git mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst gpicview-gtk3 libreoffice-fresh-hu transmission-gtk gnome-calculator vifm blueberry pcmanfm neofetch mpv chromium grsync htop gnome-disk-utility sshfs rofi caprine
 # Yay install
 cd /home/shyciii
 git clone https://aur.archlinux.org/yay.git
@@ -62,7 +62,7 @@ cd yay
 makepkg -si
 rm -rf /home/shyciii/yay
 # Install AUR programs
-yay -Syyu --noconfirm --sudoloop fuse-zip jmtpfs polybar split2flac-git subversion sacd-extract inxi downgrade
+yay -Syyu --noconfirm --sudoloop fuse-zip jmtpfs polybar split2flac-git subversion sacd-extract inxi downgrade micro
 # Install Suckless Terminal
 cd /home/Data/Linux/Compile/st-0.8.4
 sudo make clean install
