@@ -74,6 +74,7 @@ sudo mkdir /etc/pacman.d/hooks
 sudo cp /home/Data/Linux/Backup/etc/pacman.d/hooks/clean_package_cache.hook /etc/pacman.d/hooks/clean_package_cache.hook
 sudo cp -rv /home/Data/Linux/Backup/etc/sysctl.d/* /etc/sysctl.d/
 sudo cp -rfv /home/Data/Linux/Backup/etc/systemd/* /etc/systemd/
+sudo cp -fv /home/Data/Linux/Backup/issue /etc/
 sudo cp -rv /home/Data/Linux/Backup/usr/share/themes/* /usr/share/themes/
 cp -rfv /home/Data/Linux/Backup/home/.config/* /home/shyciii/.config
 cp -rfv /home/Data/Linux/Backup/home/.local/ /home/shyciii/
