@@ -11,7 +11,7 @@ mkfs.ext4 /dev/sda2
 mount /dev/sda2 /mnt
 mkdir -p /mnt/boot
 mount /dev/sda1 /mnt/boot
-pacstrap /mnt base base-devel linux linux-firmware neovim intel-ucode
+pacstrap /mnt base base-devel linux linux-firmware vim intel-ucode
 mkdir -p /mnt/home/Data
 mount /dev/sda3 /mnt/home/Data
 chmod 777 /mnt/home/Data
@@ -62,7 +62,7 @@ arch-chroot /mnt chmod 600 /swapfile
 arch-chroot /mnt mkswap /swapfile
 arch-chroot /mnt swapon /swapfile
 echo "/swapfile   none  swap  defaults,discard  0	0" >> /mnt/etc/fstab
-# Xorg
+# Install Xorg
 arch-chroot /mnt pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encodings xorg-mkfontscale xterm mesa xf86-video-intel xf86-video-nouveau
 # Install fonts, home dirs etc
 arch-chroot /mnt pacman -S --noconfirm xdg-user-dirs bind wget traceroute man-db man-pages intel-media-driver pacman-contrib bash-completion android-tools gvfs udiskie awesome-terminal-fonts ttf-hack ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
@@ -71,7 +71,6 @@ arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetoo
 cd ..
 cp -r archlinux/ /mnt/home/
 # Edit sudoers
-arch-chroot /mnt pacman -S --noconfirm vim
 arch-chroot /mnt visudo
 arch-chroot /mnt pacman -Rsn --noconfirm vim
 reboot
