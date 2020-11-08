@@ -1,4 +1,4 @@
-#!/bin/bash
+ű#!/bin/bash
 
 loadkeys hu
 pacman -Sy
@@ -41,7 +41,7 @@ echo LANG=en_US.UTF-8 > /mnt/etc/locale.conf
 arch-chroot /mnt export LANG=en_US.UTF-8
 echo "en_US.UTF-8 UTF-8" >> /mnt/etc/locale.gen
 arch-chroot /mnt locale-gen
-arch-chroot /mnt rm /etc/localtime
+0arch-chroot /mnt rm /etc/localtime
 arch-chroot /mnt ln -s /usr/share/zoneinfo/Europe/Budapest /mnt/etc/localtime
 arch-chroot /mnt hwclock --systohc
 arch-chroot /mnt echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf
@@ -64,9 +64,8 @@ arch-chroot /mnt swapon /swapfile
 echo "/swapfile   none  swap  defaults,discard  0	0" >> /mnt/etc/fstab
 # Install Xorg
 arch-chroot /mnt pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encodings xorg-mkfontscale xterm mesa xf86-video-intel xf86-video-nouveau
-# arch-chroot /mnt pacman -S --noconfirm xorg xterm mesa xf86-video-intel xf86-video-nouveau
 # Install fonts, home dirs etc
-arch-chroot /mnt pacman -S --noconfirm xdg-user-dirs bind wget traceroute man-db man-pages intel-media-driver pacman-contrib bash-completion android-tools gvfs gfvs-mtp udiskie awesome-terminal-fonts ttf-ms-fonts ttf-hack ttf-open-sans-condensed ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
+arch-chroot /mnt pacman -S --noconfirm xdg-user-dirs bind wget traceroute man-db man-pages intel-media-driver pacman-contrib bash-completion android-tools gvfs gfvs-mtp udiskie awesome-terminal-fonts ttf-hack ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
 # Install Sound
 arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
 cd ..
