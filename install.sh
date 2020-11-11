@@ -1,4 +1,4 @@
-ű#!/bin/bash
+#!/bin/bash
 
 loadkeys hu
 pacman -Sy
