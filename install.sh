@@ -74,6 +74,6 @@ cp -r archlinux/ /mnt/home/
 arch-chroot /mnt visudo
 arch-chroot /mnt pacman -Rsn --noconfirm vim
 reboot
-echo "###########################################################################"
-echo "shyciii felhasználóval lépj be, és mehet az Install2.sh script."
-echo "###########################################################################"
+###########################################################################"
+shyciii felhasználóval lépj be, és mehet az Install2.sh script."
+###########################################################################"
