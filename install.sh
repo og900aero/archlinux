@@ -41,7 +41,7 @@ echo LANG=en_US.UTF-8 > /mnt/etc/locale.conf
 arch-chroot /mnt export LANG=en_US.UTF-8
 echo "en_US.UTF-8 UTF-8" >> /mnt/etc/locale.gen
 arch-chroot /mnt locale-gen
-0arch-chroot /mnt rm /etc/localtime
+arch-chroot /mnt rm /etc/localtime
 arch-chroot /mnt ln -s /usr/share/zoneinfo/Europe/Budapest /mnt/etc/localtime
 arch-chroot /mnt hwclock --systohc
 arch-chroot /mnt echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf
