@@ -130,8 +130,10 @@ Section "InputClass"
 EndSection
 EOF
 
-# Saját config fileok visszaállítása
+# Timeout beállítása
+sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=5s/' /etc/systemd/system.conf
 
+# Saját config fileok visszaállítása
 sudo cp -rv /home/Data/Linux/Backup/usr/share/themes/* /usr/share/themes/
 cp -rfv /home/Data/Linux/Backup/home/.config/* /home/shyciii/.config
 cp -rfv /home/Data/Linux/Backup/home/.local/ /home/shyciii/
