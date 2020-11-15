@@ -62,7 +62,6 @@ EOF
 echo KEYMAP=hu > /mnt/etc/vconsole.conf
 
 # Lokális nyelvezet beállítása angolra, de magyar időformátumra
-#echo LANG=en_US.UTF-8 > /mnt/etc/locale.conf
 cat <<EOF > /mnt/etc/locale.conf
 LANG=en_US.UTF-8
 LC_TIME=hu_HU.UTF-8
@@ -121,6 +120,7 @@ cp -r archlinux/ /mnt/home/
 arch-chroot /mnt visudo
 arch-chroot /mnt pacman -Rsn --noconfirm vim
 reboot
-###########################################################################"
-shyciii felhasználóval lépj be, és mehet az Install2.sh script."
-###########################################################################"
+
+###########################################################################
+#Felhasználóval kell belépni, és mehet az Install2.sh script.
+###########################################################################
