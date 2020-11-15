@@ -61,11 +61,8 @@ EOF
 echo KEYMAP=hu > /mnt/etc/vconsole.conf
 
 # Lokális nyelvezet beállítása angolra, de magyar időformátumra
-cat <<EOF > /mnt/etc/locale.conf
-LANG=en_US.UTF-8
-LC_TIME=hu_HU.UTF-8
-EOF
-arch-chroot /mnt export LANG=en_US.UTF-8
+echo LANG=en_US.UTF-8 > /mnt/etc/locale.conf
+export LANG=en_US.UTF-8
 echo "en_US.UTF-8 UTF-8" >> /mnt/etc/locale.gen
 arch-chroot /mnt locale-gen
 arch-chroot /mnt rm /etc/localtime
