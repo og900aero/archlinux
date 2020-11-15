@@ -1,80 +1,137 @@
 #!/bin/bash
 
-# Compile using all cores
+# Processzormagok számának beállítása programok, csomagok fordításához
 set -e
 numberofcores=$(grep -c ^processor /proc/cpuinfo)
-case $numberofcores in
-    16)
+
+if [ $numberofcores -gt 1 ]
+then
         echo "You have " $numberofcores" cores."
         echo "Changing the makeflags for "$numberofcores" cores."
-        sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j17"/g' /etc/makepkg.conf
+        sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j'$(($numberofcores+1))'"/g' /etc/makepkg.conf;
         echo "Changing the compression settings for "$numberofcores" cores."
-        sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 16 -z -)/g' /etc/makepkg.conf
-        ;;
-    8)
-        echo "You have " $numberofcores" cores."
-        echo "Changing the makeflags for "$numberofcores" cores."
-        sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j9"/g' /etc/makepkg.conf
-        echo "Changing the compression settings for "$numberofcores" cores."
-        sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 8 -z -)/g' /etc/makepkg.conf
-        ;;
-    6)
-        echo "You have " $numberofcores" cores."
-        echo "Changing the makeflags for "$numberofcores" cores."
-        sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j7"/g' /etc/makepkg.conf
-        echo "Changing the compression settings for "$numberofcores" cores."
-        sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 6 -z -)/g' /etc/makepkg.conf
-        ;;       
-    4)
-        echo "You have " $numberofcores" cores."
-        echo "Changing the makeflags for "$numberofcores" cores."
-        sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j5"/g' /etc/makepkg.conf
-        echo "Changing the compression settings for "$numberofcores" cores."
-        sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 4 -z -)/g' /etc/makepkg.conf
-        ;;
-    2)
-        echo "You have " $numberofcores" cores."
-        echo "Changing the makeflags for "$numberofcores" cores."
-        sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j3"/g' /etc/makepkg.conf
-        echo "Changing the compression settings for "$numberofcores" cores."
-        sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 2 -z -)/g' /etc/makepkg.conf
-        ;;
-    *)
-        echo "We do not know how many cores you have."
-        echo "Do it manually."
-        ;;
-esac
-# Egyeb
+        sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T '"$numberofcores"' -z -)/g' /etc/makepkg.conf
+else
+        echo "No change."
+fi
+
+# Magyar billentyű beállítása
+cat <<EOF > /etc/X11/xorg.conf.d/00-keyboard.conf
+Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbLayout" "hu"
+        Option "XkbModel" "pc105"
+        Option "XkbOptions" "terminate:ctrl_alt_bksp"
+EndSection
+EOF
+
+# Data köbyvtár tulajdonosának beállítása
 sudo chown shyciii:users /home/Data
-# Sound, Bluetooth
+
+# Bluetooth és Hang üzembehelyezése
 systemctl enable bluetooth.service
 systemctl start bluetooth.service
 rfkill unblock bluetooth
 systemctl --user enable pulseaudio
 pulseaudio --start
 sudo systemctl restart bluetooth
-# Install programs
+
+# Programok telepítése hivatalos repóból
 sudo pacman -S --noconfirm xclip unrar curlftpfs fzf git mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst feh libreoffice-fresh-hu transmission-gtk gnome-calculator vifm blueberry pcmanfm neofetch mpv chromium grsync htop gnome-disk-utility sshfs rofi caprine
-# Yay install
+
+# Yay telepítése
 cd /home/shyciii
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 rm -rf /home/shyciii/yay
-# Install AUR programs
+
+# Programok telepítése AUR-ból
 yay -Syyu --noconfirm --sudoloop fuse-zip jmtpfs polybar split2flac-git subversion sacd-extract inxi downgrade micro
-# Install Suckless Terminal
+
+# Suckless Terminal telepítése
 cd /home/Data/Linux/Compile/st-0.8.4
 sudo make clean install
-# Remove orphans packages
+
+# Használaton kívűli csomagok eltávolítása
 sudo pacman -Rns --noconfirm $(pacman -Qtdq)
 yay -Rsn --noconfirm --sudoloop go
-# Copy own config
-sudo mkdir /etc/pacman.d/hooks
-sudo cp /home/Data/Linux/Backup/etc/pacman.d/hooks/clean_package_cache.hook /etc/pacman.d/hooks/clean_package_cache.hook
-sudo cp -rv /home/Data/Linux/Backup/etc/sysctl.d/* /etc/sysctl.d/
-sudo cp -rfv /home/Data/Linux/Backup/etc/systemd/* /etc/systemd/
-sudo cp -fv /home/Data/Linux/Backup/issue /etc/
+
+# Package cache futtatása minden telepítés és upgrade után
+sudo mkdir -p /etc/pacman.d/hooks
+sudo cat <<EOF > /etc/pacman.d/hooks/clean_package_cache.hook
+[Trigger]
+Operation = Upgrade
+Operation = Install
+Operation = Remove
+Type = Package
+Target = *
+[Action]
+Description = Cleaning pacman cache...
+When = PostTransaction
+Exec = /usr/bin/paccache -r
+EOF
+
+# Swap használatának beállítása
+sudo echo vm.swappiness=30 > /etc/sysctl.d/99-sysctl.conf
+
+# Login felirat módosítása
+sudo cat <<EOF > /etc/issue
+\e[H\e[2J
+                                                  \e[1;30m| \e[34m\r \s
+                      \e[37m||      \e[37m| =                 \e[30m|
+                      \e[37m||      \e[37m|                   \e[30m| \e[32m\t
+   \e[37m//==\\\\\\ ||/= /==\\\\ ||/=\\\\  \e[37m| | |/\\\\ |  | \\\\ /  \e[30m| \e[32m\d
+  \e[37m||    || ||  ||     ||  ||  \e[37m| | |  | |  |   X   \e[1;30m|
+   \e[37m\\\\\\==/| ||   \\\\==/ ||  ||  \e[37m| | |  |\  \\/|  / \\\\ \e[1;30m| \e[31m\U
+                                                  \e[1;30m|
+                                                  \e[1;30m| \e[35m\l \e[0mon \e[1;33m\n
+\e[0m
+EOF
+
+# Notebook-hoz doube tap beállítása
+sudo cat <<EOF > /etc/X11/xorg.conf.d/40-libinput.conf
+Section "InputClass"
+        Identifier "libinput pointer catchall"
+        MatchIsPointer "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+
+Section "InputClass"
+        Identifier "libinput keyboard catchall"
+        MatchIsKeyboard "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+
+Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        Option "Tapping" "on"
+        Option "TappingButtonMap" "lmr"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+
+Section "InputClass"
+        Identifier "libinput touchscreen catchall"
+        MatchIsTouchscreen "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+
+Section "InputClass"
+        Identifier "libinput tablet catchall"
+        MatchIsTablet "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+EOF
+
+# Saját config fileok visszaállítása
+
 sudo cp -rv /home/Data/Linux/Backup/usr/share/themes/* /usr/share/themes/
 cp -rfv /home/Data/Linux/Backup/home/.config/* /home/shyciii/.config
 cp -rfv /home/Data/Linux/Backup/home/.local/ /home/shyciii/
@@ -82,8 +139,10 @@ cp -rfv /home/Data/Linux/Backup/home/.grsync/ /home/shyciii/
 mkdir /home/shyciii/mtp && mkdir /home/shyciii/mtp/android && mkdir /home/shyciii/mtp/ftp && mkdir /home/shyciii/mtp/ssh
 cp -rfv /home/Data/Linux/Backup/home/Pictures /home/shyciii/
 cp -fv /home/Data/Linux/Backup/home/.b* /home/Data/Linux/Backup/home/.gt* /home/Data/Linux/Backup/home/.x* /home/shyciii/
-sudo cp -fv /home/Data/Linux/Arch_egyeb/mousepad_double_tap/etc/X11/xorg.conf.d/* /etc/X11/xorg.conf.d/
+
+# Home könyvtár tulajdonosának visszaállítása
 sudo chown -R shyciii:users /home/shyciii/
+
 # Céges VPN beállítása
 sudo nmcli connection import type openvpn file /home/Data/_TMVPN/TelemediaOVPN.ovpn
 cd .. && sudo rm -rf /home/archlinux
