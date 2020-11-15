@@ -4,8 +4,7 @@
 loadkeys hu
 
 # A 10 leggyorsabb mirror szerver beállítása
-pacman -Sy
-pacman -S --noconfirm reflector
+pacman -Sy --noconfirm reflector
 reflector --verbose --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 # Idő szinkronizálás engedélyezése távoli idő kiszolgálóval
