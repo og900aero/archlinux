@@ -76,6 +76,9 @@ EOF
 # Swap használatának beállítása
 sudo echo vm.swappiness=30 > /etc/sysctl.d/99-sysctl.conf
 
+# Android Oneplus udev szabály
+sudo echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="2a70", ATTR{idProduct}=="9011", MODE="0660", GROUP="uucp", ENV{ID_MTP_DEVICE}="1", SYMLINK+="libmtp"' > /etc/udev/rules.d/51-android.rules
+
 # Login felirat módosítása
 sudo cat <<EOF > /etc/issue
 \e[H\e[2J
