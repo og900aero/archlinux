@@ -63,11 +63,11 @@ EOF
 read -n 1
 
 # Magyar időzóna beállítása
-ln -s /mnt/usr/share/zoneinfo/Europe/Budapest /mnt/etc/localtime
+ln -sf /mnt/usr/share/zoneinfo/Europe/Budapest /mnt/etc/localtime
 
 read -n 1
 
-arch-chroot /mnt ln -s /usr/share/zoneinfo/Europe/Budapest /etc/localtime
+arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
 
 read -n 1
 
