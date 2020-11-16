@@ -55,6 +55,11 @@ ln -s /mnt/usr/share/zoneinfo/Europe/Budapest /mnt/etc/localtime
 arch-chroot /mnt hwclock --systohc
 
 # Lokális nyelvezet beállítása angolra, de magyar időformátumra
+<<<<<<< HEAD
+=======
+echo LANG=en_US.UTF-8 > /mnt/etc/locale.conf
+export LANG=en_US.UTF-8
+>>>>>>> 434071130fb250b155e68a84c07839d8e679d2d4
 echo "en_US.UTF-8 UTF-8" >> /mnt/etc/locale.gen
 arch-chroot /mnt locale-gen
 echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
