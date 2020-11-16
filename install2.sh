@@ -15,12 +15,8 @@ else
         echo "No change."
 fi
 
-read -n 1
-
 # Data köbyvtár tulajdonosának beállítása
 sudo chown shyciii:users /home/Data
-
-read -n 1
 
 # Bluetooth és Hang üzembehelyezése
 systemctl enable bluetooth.service
@@ -30,12 +26,8 @@ systemctl --user enable pulseaudio
 pulseaudio --start
 sudo systemctl restart bluetooth
 
-read -n 1
-
 # Programok telepítése hivatalos repóból
 sudo pacman -Sy --noconfirm xclip unrar curlftpfs fzf git mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst feh libreoffice-fresh-hu transmission-gtk gnome-calculator vifm blueberry pcmanfm neofetch mpv chromium grsync htop gnome-disk-utility sshfs rofi caprine
-
-read -n 1
 
 # Yay telepítése
 cd /home/shyciii
@@ -44,23 +36,15 @@ cd yay
 makepkg -si
 rm -rf /home/shyciii/yay
 
-read -n 1
-
 # Programok telepítése AUR-ból
 yay -Syyu --noconfirm --sudoloop fuse-zip polybar split2flac-git subversion sacd-extract inxi downgrade micro
-
-read -n 1
 
 # Suckless Terminal telepítése
 cd /home/Data/Linux/Compile/st-0.8.4
 sudo make clean install
 
-read -n 1
-
 # Használaton kívűli csomagok eltávolítása
 sudo pacman -Rns --noconfirm $(pacman -Qtdq)
-
-read -n 1
 
 # Package cache futtatása minden telepítés és upgrade után
 sudo mkdir -p /etc/pacman.d/hooks
@@ -77,17 +61,11 @@ When = PostTransaction
 Exec = /usr/bin/paccache -r
 EOF
 
-read -n 1
-
 # Swap használatának beállítása
 sudo echo "vm.swappiness=30" > /etc/sysctl.d/99-sysctl.conf
 
-read -n 1
-
 # Android Oneplus udev szabály
 sudo echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="2a70", ATTR{idProduct}=="9011", MODE="0660", GROUP="uucp", ENV{ID_MTP_DEVICE}="1", SYMLINK+="libmtp"' > /etc/udev/rules.d/51-android.rules
-
-read -n 1
 
 # Login felirat módosítása
 sudo cat <<EOF > /etc/issue
@@ -102,8 +80,6 @@ sudo cat <<EOF > /etc/issue
                                                   \e[1;30m| \e[35m\l \e[0mon \e[1;33m\n
 \e[0m
 EOF
-
-read -n 1
 
 # Notebook-hoz doube tap beállítása
 sudo cat <<EOF > /etc/X11/xorg.conf.d/40-libinput.conf
@@ -145,12 +121,8 @@ Section "InputClass"
 EndSection
 EOF
 
-read -n 1
-
 # Timeout beállítása
 sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=5s/' /etc/systemd/system.conf
-
-read -n 1
 
 # Saját config fileok visszaállítása
 sudo cp -rv /home/Data/Linux/Backup/usr/share/themes/* /usr/share/themes/
@@ -161,12 +133,8 @@ mkdir /home/shyciii/mtp && mkdir /home/shyciii/mtp/android && mkdir /home/shycii
 cp -rfv /home/Data/Linux/Backup/home/Pictures /home/shyciii/
 cp -fv /home/Data/Linux/Backup/home/.b* /home/Data/Linux/Backup/home/.gt* /home/Data/Linux/Backup/home/.x* /home/shyciii/
 
-read -n 1
-
 # Home könyvtár tulajdonosának visszaállítása
 sudo chown -R shyciii:users /home/shyciii/
-
-read -n 1
 
 # Céges VPN beállítása
 sudo nmcli connection import type openvpn file /home/Data/_TMVPN/TelemediaOVPN.ovpn
