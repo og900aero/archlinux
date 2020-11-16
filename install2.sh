@@ -48,7 +48,7 @@ sudo pacman -Rns --noconfirm $(pacman -Qtdq)
 
 # Package cache futtatása minden telepítés és upgrade után
 sudo mkdir -p /etc/pacman.d/hooks
-sudo cat <<EOF > /etc/pacman.d/hooks/clean_package_cache.hook
+sudo bash -c "cat > /etc/pacman.d/hooks/clean_package_cache.hook" <<EOF
 [Trigger]
 Operation = Upgrade
 Operation = Install
@@ -68,7 +68,7 @@ sudo echo "vm.swappiness=30" > /etc/sysctl.d/99-sysctl.conf
 sudo echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="2a70", ATTR{idProduct}=="9011", MODE="0660", GROUP="uucp", ENV{ID_MTP_DEVICE}="1", SYMLINK+="libmtp"' > /etc/udev/rules.d/51-android.rules
 
 # Login felirat módosítása
-sudo cat <<EOF > /etc/issue
+sudo bash -c "cat > /etc/issue" <<EOF
 \e[H\e[2J
                                                   \e[1;30m| \e[34m\r \s
                       \e[37m||      \e[37m| =                 \e[30m|
@@ -82,7 +82,7 @@ sudo cat <<EOF > /etc/issue
 EOF
 
 # Notebook-hoz doube tap beállítása
-sudo cat <<EOF > /etc/X11/xorg.conf.d/40-libinput.conf
+sudo bash -c "cat > /etc/X11/xorg.conf.d/40-libinput.conf" <<EOF
 Section "InputClass"
         Identifier "libinput pointer catchall"
         MatchIsPointer "on"
