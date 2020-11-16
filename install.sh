@@ -51,8 +51,6 @@ EOF
 # Magyar időzóna beállítása
 ln -sf /mnt/usr/share/zoneinfo/Europe/Budapest /mnt/etc/localtime
 
-#arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
-
 # Hardver óra beállítása
 arch-chroot /mnt hwclock --systohc
 
@@ -128,7 +126,7 @@ arch-chroot /mnt pacman -Rsn --noconfirm vim
 cd ..
 cp -r archlinux/ /mnt/home/shyciii/
 
-#reboot
+reboot
 
 ###########################################################################
 #Felhasználóval kell belépni, és mehet az Install2.sh script.
