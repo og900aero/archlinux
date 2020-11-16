@@ -119,14 +119,14 @@ arch-chroot /mnt pacman -S --noconfirm xdg-user-dirs bind wget traceroute man-db
 
 # Install Sound
 arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
-cd ..
-
-# Leklónozott telepítési scriptek másolása a home könyvtárba
-cp -r archlinux/ /mnt/home/shyciii/
 
 # Sudoers szerkesztése
 arch-chroot /mnt visudo
 arch-chroot /mnt pacman -Rsn --noconfirm vim
+
+# Leklónozott telepítési scriptek másolása a home könyvtárba
+cd ..
+cp -r archlinux/ /mnt/home/shyciii/
 
 #reboot
 
