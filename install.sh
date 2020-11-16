@@ -49,9 +49,9 @@ options  root=PARTUUID=$(blkid | grep sda2 | sed 's/\(.*\)PARTUUID="\(.*\)"$/\2/
 EOF
 
 # Magyar időzóna beállítása
-#ln -sf /mnt/usr/share/zoneinfo/Europe/Budapest /mnt/etc/localtime
+ln -sf /mnt/usr/share/zoneinfo/Europe/Budapest /mnt/etc/localtime
 
-arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
+#arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
 
 # Hardver óra beállítása
 arch-chroot /mnt hwclock --systohc
