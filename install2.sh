@@ -15,17 +15,6 @@ else
         echo "No change."
 fi
 
-# Magyar billentyű beállítása
-cat <<EOF > /etc/X11/xorg.conf.d/00-keyboard.conf
-Section "InputClass"
-        Identifier "system-keyboard"
-        MatchIsKeyboard "on"
-        Option "XkbLayout" "hu"
-        Option "XkbModel" "pc105"
-        Option "XkbOptions" "terminate:ctrl_alt_bksp"
-EndSection
-EOF
-
 # Data köbyvtár tulajdonosának beállítása
 sudo chown shyciii:users /home/Data
 
@@ -48,7 +37,7 @@ makepkg -si
 rm -rf /home/shyciii/yay
 
 # Programok telepítése AUR-ból
-yay -Syyu --noconfirm --sudoloop fuse-zip jmtpfs polybar split2flac-git subversion sacd-extract inxi downgrade micro
+yay -Syyu --noconfirm --sudoloop fuse-zip polybar split2flac-git subversion sacd-extract inxi downgrade micro
 
 # Suckless Terminal telepítése
 cd /home/Data/Linux/Compile/st-0.8.4
@@ -56,7 +45,6 @@ sudo make clean install
 
 # Használaton kívűli csomagok eltávolítása
 sudo pacman -Rns --noconfirm $(pacman -Qtdq)
-yay -Rsn --noconfirm --sudoloop go
 
 # Package cache futtatása minden telepítés és upgrade után
 sudo mkdir -p /etc/pacman.d/hooks
@@ -74,7 +62,7 @@ Exec = /usr/bin/paccache -r
 EOF
 
 # Swap használatának beállítása
-sudo echo vm.swappiness=30 > /etc/sysctl.d/99-sysctl.conf
+sudo echo "vm.swappiness=30" > /etc/sysctl.d/99-sysctl.conf
 
 # Android Oneplus udev szabály
 sudo echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="2a70", ATTR{idProduct}=="9011", MODE="0660", GROUP="uucp", ENV{ID_MTP_DEVICE}="1", SYMLINK+="libmtp"' > /etc/udev/rules.d/51-android.rules

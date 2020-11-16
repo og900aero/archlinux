@@ -11,9 +11,9 @@ reflector --verbose --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
 timedatectl set-ntp true
 
 # Saját partíciók kezelése, beállítása
-fdisk /dev/sda
-mkfs.fat -F32 /dev/sda1
-mkfs.ext4 /dev/sda2
+#cfdisk
+#mkfs.fat -F32 /dev/sda1
+#mkfs.ext4 /dev/sda2
 
 # Root felcsatolása
 mount /dev/sda2 /mnt
@@ -48,36 +48,42 @@ initrd   /initramfs-linux.img
 options  root=PARTUUID=$(blkid | grep sda2 | sed 's/\(.*\)PARTUUID="\(.*\)"$/\2/') rw quit i915.enable_guc=2 loglevel=3
 EOF
 
+# Magyar időzóna beállítása
+ln -s /mnt/usr/share/zoneinfo/Europe/Budapest /mnt/etc/localtime
+
+# Hardver óra beállítása
+arch-chroot /mnt hwclock --systohc
+
+# Lokális nyelvezet beállítása angolra, de magyar időformátumra
+echo "en_US.UTF-8 UTF-8" >> /mnt/etc/locale.gen
+arch-chroot /mnt locale-gen
+echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
+
+# Parancssori billentyűzet beállítása
+echo KEYMAP=hu > /mnt/etc/vconsole.conf
+
+# Magyar billentyű beállítása
+cat <<EOF > /mnt/etc/X11/xorg.conf.d/00-keyboard.conf
+Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbLayout" "hu"
+        Option "XkbModel" "pc105"
+        Option "XkbOptions" "terminate:ctrl_alt_bksp"
+EndSection
+EOF
+
 # Host beállítása
 echo -e "127.0.0.1  localhost\n::1  localhost\n127.0.0.1  archlinux" > /mnt/etc/hosts
-echo archlinux > /mnt/etc/hostname
+echo "archlinux" > /mnt/etc/hostname
 cat <<EOF > /etc/hosts
 127.0.0.1	localhost
 ::1		localhost
 127.0.1.1	archlinux.localdomain	archlinux
 EOF
 
-# Parancssori billentyűzet beállítása
-echo KEYMAP=hu > /mnt/etc/vconsole.conf
-
-# Lokális nyelvezet beállítása angolra, de magyar időformátumra
-cat <<EOF > /mnt/etc/locale.conf
-LANG=en_US.UTF-8
-LC_TIME=hu_HU.UTF-8
-EOF
-arch-chroot /mnt export LANG=en_US.UTF-8
-echo "en_US.UTF-8 UTF-8" >> /mnt/etc/locale.gen
-arch-chroot /mnt locale-gen
-arch-chroot /mnt rm /etc/localtime
-
-# Magyar időzóna beállítása
-arch-chroot /mnt ln -s /usr/share/zoneinfo/Europe/Budapest /mnt/etc/localtime
-
-# Hardver óra beállítása
-arch-chroot /mnt hwclock --systohc
-
 # Naplózás beállítása
-arch-chroot /mnt echo "MaxRetentionSec=15day" >> /etc/systemd/journald.conf
+echo "MaxRetentionSec=15day" >> /mnt/etc/systemd/journald.conf
 
 # Hálózati komponensek telepítése
 arch-chroot /mnt pacman -S --noconfirm networkmanager network-manager-applet networkmanager-openvpn
@@ -113,11 +119,12 @@ arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetoo
 cd ..
 
 # Leklónozott telepítési scriptek másolása a home könyvtárba
-cp -r archlinux/ /mnt/home/
+cp -r archlinux/ /mnt/home/shyciii/
 
 # Sudoers szerkesztése
 arch-chroot /mnt visudo
 arch-chroot /mnt pacman -Rsn --noconfirm vim
+
 reboot
 
 ###########################################################################
