@@ -115,7 +115,7 @@ EndSection
 EOF
 
 # Install fonts, home dirs etc
-arch-chroot /mnt pacman -S --noconfirm xdg-user-dirs bind wget traceroute man-db man-pages intel-media-driver pacman-contrib bash-completion android-tools gvfs gfvs-mtp udiskie awesome-terminal-fonts ttf-hack ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
+arch-chroot /mnt pacman -S --noconfirm xdg-user-dirs bind wget traceroute man-db man-pages intel-media-driver pacman-contrib bash-completion android-tools gvfs gvfs-mtp udiskie awesome-terminal-fonts ttf-hack ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
 
 # Install Sound
 arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
