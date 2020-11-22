@@ -111,18 +111,18 @@ EndSection
 EOF
 
 # Timeout beállítása
-sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=5s/' /etc/systemd/system.conf
+sudo sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=10s/' /etc/systemd/system.conf
 
 # Saját config fileok visszaállítása
 sudo cp -rv /home/Data/Linux/Backup/usr/share/themes/* /usr/share/themes/
 sudo cp -rv /home/Data/Linux/Backup/etc/issue /etc/issue
-cp -rfv /home/Data/Linux/Backup/home/.config/* /home/shyciii/.config
+atool -fvX ~/ /home/Data/Linux/Backup/home_backup.tar.gz
 cp -rfv /home/Data/Linux/Backup/home/.local/ /home/shyciii/
-cp -rfv /home/Data/Linux/Backup/home/.grsync/ /home/shyciii/
-mkdir /home/shyciii/mtp && mkdir /home/shyciii/mtp/android && mkdir /home/shyciii/mtp/ftp && mkdir /home/shyciii/mtp/ssh
-cp -rfv /home/Data/Linux/Backup/home/Pictures /home/shyciii/
-cp -fv /home/Data/Linux/Backup/home/.b* /home/Data/Linux/Backup/home/.gt* /home/Data/Linux/Backup/home/.x* /home/shyciii/
-
+#cp -rfv /home/Data/Linux/Backup/home/.config/* /home/shyciii/.config
+#cp -rfv /home/Data/Linux/Backup/home/.grsync/ /home/shyciii/
+#mkdir /home/shyciii/mtp && mkdir /home/shyciii/mtp/android && mkdir /home/shyciii/mtp/ftp && mkdir /home/shyciii/mtp/ssh
+#cp -rfv /home/Data/Linux/Backup/home/Pictures /home/shyciii/
+#cp -fv /home/Data/Linux/Backup/home/.b* /home/Data/Linux/Backup/home/.gt* /home/Data/Linux/Backup/home/.x* /home/shyciii/
 
 # Home könyvtár tulajdonosának visszaállítása
 sudo chown -R shyciii:users /home/shyciii/
