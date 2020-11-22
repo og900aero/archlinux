@@ -27,7 +27,7 @@ pulseaudio --start
 sudo systemctl restart bluetooth
 
 # Programok telepítése hivatalos repóból
-sudo pacman -Sy --noconfirm xclip unrar curlftpfs fzf git mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst feh libreoffice-fresh-hu transmission-gtk gnome-calculator vifm blueberry pcmanfm neofetch mpv chromium grsync glances gnome-disk-utility sshfs rofi caprine
+sudo pacman -Sy --noconfirm xclip fuse-zip zip unrar curlftpfs fzf mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst feh libreoffice-fresh-hu transmission-gtk gnome-calculator vifm blueberry pcmanfm neofetch mpv chromium grsync glances gnome-disk-utility sshfs rofi caprine
 
 # Yay telepítése
 cd /home/shyciii
@@ -37,11 +37,14 @@ makepkg -si
 rm -rf /home/shyciii/yay
 
 # Programok telepítése AUR-ból
-yay -Syyu --noconfirm --sudoloop fuse-zip polybar split2flac-git subversion sacd-extract inxi downgrade micro
+yay -Syyu --noconfirm --sudoloop archivemount polybar split2flac-git subversion sacd-extract inxi downgrade micro
 
 # Suckless Terminal telepítése
 cd /home/Data/Linux/Compile/st-0.8.4
 sudo make clean install
+
+# USB Driveok automountja
+sudo sh /home/Data/Linux/Compile/automount-usb/configure.sh
 
 # Használaton kívűli csomagok eltávolítása
 sudo pacman -Rns --noconfirm $(pacman -Qtdq)
@@ -65,21 +68,7 @@ EOF
 sudo bash -c "echo vm.swappiness=30 > /etc/sysctl.d/99-sysctl.conf"
 
 # Android Oneplus udev szabály
-sudo bash -c 'echo SUBSYSTEM=="usb", ATTR{idVendor}=="2a70", ATTR{idProduct}=="9011", MODE="0660", GROUP="uucp", ENV{ID_MTP_DEVICE}="1", SYMLINK+="libmtp" > /etc/udev/rules.d/51-android.rules"
-
-# Login felirat módosítása
-sudo bash -c "cat > /etc/issue" <<EOF
-\e[H\e[2J
-                                                  \e[1;30m| \e[34m\r \s
-                      \e[37m||      \e[37m| =                 \e[30m|
-                      \e[37m||      \e[37m|                   \e[30m| \e[32m\t
-   \e[37m//==\\\\\\ ||/= /==\\\\ ||/=\\\\  \e[37m| | |/\\\\ |  | \\\\ /  \e[30m| \e[32m\d
-  \e[37m||    || ||  ||     ||  ||  \e[37m| | |  | |  |   X   \e[1;30m|
-   \e[37m\\\\\\==/| ||   \\\\==/ ||  ||  \e[37m| | |  |\  \\/|  / \\\\ \e[1;30m| \e[31m\U
-                                                  \e[1;30m|
-                                                  \e[1;30m| \e[35m\l \e[0mon \e[1;33m\n
-\e[0m
-EOF
+sudo bash -c 'echo SUBSYSTEM=="usb", ATTR{idVendor}=="2a70", ATTR{idProduct}=="9011", MODE="0660", GROUP="uucp", ENV{ID_MTP_DEVICE}="1", SYMLINK+="libmtp" > /etc/udev/rules.d/51-android.rules'
 
 # Notebook-hoz doube tap beállítása
 sudo bash -c "cat > /etc/X11/xorg.conf.d/40-libinput.conf" <<EOF
@@ -126,12 +115,14 @@ sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=5s/' /etc/systemd/sys
 
 # Saját config fileok visszaállítása
 sudo cp -rv /home/Data/Linux/Backup/usr/share/themes/* /usr/share/themes/
+sudo cp -rv /home/Data/Linux/Backup/etc/issue /etc/issue
 cp -rfv /home/Data/Linux/Backup/home/.config/* /home/shyciii/.config
 cp -rfv /home/Data/Linux/Backup/home/.local/ /home/shyciii/
 cp -rfv /home/Data/Linux/Backup/home/.grsync/ /home/shyciii/
 mkdir /home/shyciii/mtp && mkdir /home/shyciii/mtp/android && mkdir /home/shyciii/mtp/ftp && mkdir /home/shyciii/mtp/ssh
 cp -rfv /home/Data/Linux/Backup/home/Pictures /home/shyciii/
 cp -fv /home/Data/Linux/Backup/home/.b* /home/Data/Linux/Backup/home/.gt* /home/Data/Linux/Backup/home/.x* /home/shyciii/
+
 
 # Home könyvtár tulajdonosának visszaállítása
 sudo chown -R shyciii:users /home/shyciii/
