@@ -27,7 +27,7 @@ pulseaudio --start
 sudo systemctl restart bluetooth
 
 # Programok telepítése hivatalos repóból
-sudo pacman -Sy --noconfirm xclip atool fuse-zip zip unzip unrar curlftpfs fzf mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst feh libreoffice-fresh-hu transmission-gtk gnome-calculator vifm blueberry pcmanfm neofetch mpv chromium grsync glances sshfs rofi caprine
+sudo pacman -Sy --noconfirm xclip atool fuse-zip zip unzip unrar curlftpfs fzf mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst feh libreoffice-fresh-hu transmission-gtk gnome-calculator vifm blueberry pcmanfm neofetch mpv chromium grsync htop sshfs rofi caprine
 
 # Yay telepítése
 cd /home/shyciii
