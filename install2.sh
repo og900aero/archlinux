@@ -26,6 +26,9 @@ systemctl --user enable pulseaudio
 pulseaudio --start
 sudo systemctl restart bluetooth
 
+# Heti fstrim futtatásának engedélyezése (SSD Trim funkció)
+systemctl start fstrim.service
+
 # Programok telepítése hivatalos repóból
 sudo pacman -Sy --noconfirm xclip atool fuse-zip zip unzip unrar curlftpfs fzf mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst feh libreoffice-fresh-hu transmission-gtk gnome-calculator vifm blueberry neofetch mpv chromium grsync htop sshfs rofi caprine
 
@@ -65,7 +68,7 @@ Exec = /usr/bin/paccache -r
 EOF
 
 # Swap használatának beállítása
-sudo bash -c "echo vm.swappiness=30 > /etc/sysctl.d/99-sysctl.conf"
+sudo bash -c "echo vm.swappiness=10 > /etc/sysctl.d/99-sysctl.conf"
 
 # Android Oneplus udev szabály
 #sudo bash -c 'echo SUBSYSTEM=="usb", ATTR{idVendor}=="2a70", ATTR{idProduct}=="9011", MODE="0660", GROUP="uucp", ENV{ID_MTP_DEVICE}="1", SYMLINK+="libmtp" > /etc/udev/rules.d/51-android.rules'

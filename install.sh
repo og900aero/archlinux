@@ -32,7 +32,7 @@ chmod 777 /mnt/home/Data
 
 # Fstab létrehozása, SSD.nek megfelelő értékekre cserélés
 genfstab -U /mnt >> /mnt/etc/fstab
-sed -i 's/rw,relatime/defaults,discard,noatime/g' /mnt/etc/fstab
+sed -i 's/rw/defaults/g' /mnt/etc/fstab
 
 # UEFI és systemd-s bootolás beállítása + egyedi kapcsolók hozzáadása
 arch-chroot /mnt bootctl --path=/boot install
@@ -99,7 +99,7 @@ arch-chroot /mnt dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
 arch-chroot /mnt chmod 600 /swapfile
 arch-chroot /mnt mkswap /swapfile
 arch-chroot /mnt swapon /swapfile
-echo "/swapfile   none  swap  defaults,discard  0	0" >> /mnt/etc/fstab
+echo "/swapfile   none  swap  defaults  0	0" >> /mnt/etc/fstab
 
 # Install Xorg, videó driverek
 arch-chroot /mnt pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encodings xorg-mkfontscale xterm mesa xf86-video-intel xf86-video-nouveau
