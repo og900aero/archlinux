@@ -74,9 +74,6 @@ EOF
 # Naplózás beállítása
 echo "MaxRetentionSec=15day" >> /mnt/etc/systemd/journald.conf
 
-# Default Timeout érték kisebbre vétele
-echo "DefaultTimeoutStopSec=10s" >> /mnt/etc/systemd/system.conf
-
 # Hálózati komponensek telepítése
 arch-chroot /mnt pacman -S --noconfirm networkmanager network-manager-applet networkmanager-openvpn
 
