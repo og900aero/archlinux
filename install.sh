@@ -23,7 +23,7 @@ mkdir -p /mnt/boot
 mount /dev/sda1 /mnt/boot
 
 # Alap rendszer telepítése
-pacstrap /mnt base base-devel linux linux-firmware vim intel-ucode
+pacstrap /mnt base base-devel linux linux-firmware intel-ucode
 
 # Saját Data könyvtár létrehozása, és felmountolása
 mkdir -p /mnt/home/Data
@@ -45,7 +45,7 @@ title    Arch Linux
 linux    /vmlinuz-linux
 initrd   /intel-ucode.img
 initrd   /initramfs-linux.img
-options  root=PARTUUID=$(blkid | grep sda2 | sed 's/\(.*\)PARTUUID="\(.*\)"$/\2/') rw quit i915.enable_guc=2 loglevel=3
+options  root=PARTUUID=$(blkid | grep sda2 | sed 's/\(.*\)PARTUUID="\(.*\)"$/\2/') rw quit loglevel=3
 EOF
 
 # Magyar időzóna beállítása
@@ -104,11 +104,22 @@ arch-chroot /mnt pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encodin
 # Magyar billentyű beállítása
 cat <<EOF > /mnt/etc/X11/xorg.conf.d/00-keyboard.conf
 Section "InputClass"
-        Identifier "system-keyboard"
-        MatchIsKeyboard "on"
-        Option "XkbLayout" "hu"
-        Option "XkbModel" "pc105"
-        Option "XkbOptions" "terminate:ctrl_alt_bksp"
+    Identifier "system-keyboard"
+    MatchIsKeyboard "on"
+    Option "XkbLayout" "hu"
+    Option "XkbModel" "pc105"
+    Option "XkbOptions" "terminate:ctrl_alt_bksp"
+EndSection
+EOF
+
+# Intel driver beállítása
+cat <<EOF > /mnt/etc/X11/xorg.conf.d/20-intel.conf
+Section "Device"
+    Identifier "Intel Graphics"
+    Driver "intel"
+    Option "AccelMethod" "sna"
+    Option "TearFree" "true"
+    Option "TripleBuffer" "true"
 EndSection
 EOF
 
@@ -119,6 +130,7 @@ arch-chroot /mnt pacman -S --noconfirm libmtp xdg-user-dirs bind wget traceroute
 arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
 
 # Sudoers szerkesztése
+arch-chroot /mnt pacman -S --noconfirm vim
 arch-chroot /mnt visudo
 arch-chroot /mnt pacman -Rsn --noconfirm vim
 
