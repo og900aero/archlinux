@@ -36,7 +36,7 @@ sudo pacman -Sy --noconfirm trash-cli xclip atool fuse-zip zip unzip unrar curlf
 cd /home/shyciii
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si
+makepkg -si --noconfirm
 rm -rf /home/shyciii/yay
 
 # Programok telepítése AUR-ból
