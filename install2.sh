@@ -25,12 +25,13 @@ rfkill unblock bluetooth
 systemctl --user enable pulseaudio
 pulseaudio --start
 sudo systemctl restart bluetooth
+sudo bash -c "echo AutoEnable=true >> /etc/bluetooth/main.conf"
 
 # Heti fstrim futtatásának engedélyezése (SSD Trim funkció)
 systemctl start fstrim.service
 
 # Programok telepítése hivatalos repóból
-sudo pacman -Sy --noconfirm trash-cli xclip atool fuse-zip zip unzip unrar curlftpfs fzf mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst feh libreoffice-fresh-hu transmission-gtk gnome-calculator vifm blueberry neofetch mpv chromium grsync htop sshfs rofi caprine
+sudo pacman -Sy --noconfirm trash-cli xclip atool fuse-zip zip unzip unrar curlftpfs fzf mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst feh libreoffice-fresh-hu transmission-gtk gnome-calculator vifm neofetch mpv chromium grsync htop sshfs rofi caprine
 
 # Yay telepítése
 cd /home/shyciii

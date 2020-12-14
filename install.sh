@@ -82,15 +82,6 @@ arch-chroot /mnt systemctl enable NetworkManager.service
 # mkinitcpio manuális futtatás (initial ramdisk)
 arch-chroot /mnt mkinitcpio -p linux
 
-# Root jelszó beállítása
-echo "Root jelszava:"
-arch-chroot /mnt passwd root
-
-# Felhasználó létrehozása, csoportokhoz hozzáadása, jelszó létrehozása
-arch-chroot /mnt useradd -m -g users -G audio,video,network,wheel,storage,rfkill shyciii
-echo "Shyciii jelszava:"
-arch-chroot /mnt passwd shyciii
-
 # Swap file létrehozása
 arch-chroot /mnt dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
 arch-chroot /mnt chmod 600 /swapfile
@@ -123,11 +114,20 @@ Section "Device"
 EndSection
 EOF
 
+# Install Sound and Bluetooth
+arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth bluez
+
 # Install fonts, home dirs etc
 arch-chroot /mnt pacman -S --noconfirm libmtp xdg-user-dirs bind wget traceroute man-db man-pages intel-media-driver pacman-contrib bash-completion android-tools awesome-terminal-fonts ttf-hack ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
 
-# Install Sound
-arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth
+# Root jelszó beállítása
+echo "Root jelszava:"
+arch-chroot /mnt passwd root
+
+# Felhasználó létrehozása, csoportokhoz hozzáadása, jelszó létrehozása
+arch-chroot /mnt useradd -m -g users -G audio,video,network,wheel,storage,lp,rfkill shyciii
+echo "Shyciii jelszava:"
+arch-chroot /mnt passwd shyciii
 
 # Sudoers szerkesztése
 arch-chroot /mnt pacman -S --noconfirm vim
