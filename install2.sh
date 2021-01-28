@@ -31,7 +31,7 @@ sudo bash -c "echo AutoEnable=true >> /etc/bluetooth/main.conf"
 systemctl start fstrim.service
 
 # Programok telepítése hivatalos repóból
-sudo pacman -Sy --noconfirm imagemagick imv trash-cli xclip fuse-zip zip unzip unrar curlftpfs fzf mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst libreoffice-fresh-hu transmission-gtk gnome-calculator vifm neofetch mpv chromium grsync htop sshfs rofi caprine
+sudo pacman -Sy --noconfirm fd imagemagick imv trash-cli xclip fuse-zip zip unzip unrar curlftpfs fzf mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst libreoffice-fresh-hu transmission-gtk gnome-calculator vifm neofetch mpv chromium grsync htop sshfs rofi caprine
 
 # Yay telepítése
 cd /home/shyciii
