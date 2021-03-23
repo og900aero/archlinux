@@ -31,7 +31,7 @@ sudo bash -c "echo AutoEnable=true >> /etc/bluetooth/main.conf"
 systemctl start fstrim.service
 
 # Programok telepítése hivatalos repóból
-sudo pacman -Sy --noconfirm fd imagemagick imv trash-cli xclip fuse-zip zip unzip unrar curlftpfs fzf mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst libreoffice-fresh-hu transmission-gtk gnome-calculator vifm neofetch mpv google-chrome grsync htop sshfs rofi caprine
+sudo pacman -Sy --noconfirm fd imagemagick imv trash-cli xclip fuse-zip zip unzip unrar curlftpfs fzf mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst libreoffice-fresh-hu transmission-gtk gnome-calculator vifm neofetch mpv grsync htop sshfs rofi caprine
 
 # Yay telepítése
 cd /home/shyciii
@@ -41,7 +41,7 @@ makepkg -si --noconfirm
 rm -rf /home/shyciii/yay
 
 # Programok telepítése AUR-ból
-yay -Syu --noconfirm --sudoloop go-mtpfs-git archivemount polybar split2flac-git subversion sacd-extract inxi downgrade micro
+yay -Syu --noconfirm --sudoloop go-mtpfs-git archivemount google-chrome polybar split2flac-git subversion sacd-extract inxi downgrade micro
 
 # Suckless Terminal telepítése
 cd /home/Data/Linux/Compile/st-0.8.4
