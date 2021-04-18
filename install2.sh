@@ -117,9 +117,9 @@ sudo sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=10s/' /etc/syste
 # Saját config fileok visszaállítása
 sudo cp -rv /home/Data/Linux/Backup/usr/share/themes/* /usr/share/themes/
 sudo cp -rv /home/Data/Linux/Backup/etc/issue /etc/issue
-atool -fvX ~/ /home/Data/Linux/Backup/home_backup.tar.gz
-cp -rfv /home/Data/Linux/Backup/home/.local/ /home/shyciii/
+#cp -rfv /home/Data/Linux/Backup/home/.local/ /home/shyciii/
 mkdir -p /home/shyciii/mnt/android /home/shyciii/mnt/ftp /home/shyciii/mnt/ssh
+tar -xvf /home/Data/Linux/Backup/home_backup.tar.zst --directory /home/shyciii
 #cp -rfv /home/Data/Linux/Backup/home/.config/* /home/shyciii/.config
 #cp -rfv /home/Data/Linux/Backup/home/.grsync/ /home/shyciii/
 #cp -rfv /home/Data/Linux/Backup/home/Pictures /home/shyciii/
