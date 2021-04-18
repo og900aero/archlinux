@@ -28,7 +28,7 @@ pacstrap /mnt base base-devel linux linux-firmware intel-ucode
 # Saját Data könyvtár létrehozása, és felmountolása
 mkdir -p /mnt/home/Data
 mount /dev/sda3 /mnt/home/Data
-chmod 777 /mnt/home/Data
+chmod 744 /mnt/home/Data
 
 # Fstab létrehozása, SSD.nek megfelelő értékekre cserélés
 genfstab -U /mnt >> /mnt/etc/fstab

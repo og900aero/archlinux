@@ -130,5 +130,5 @@ sudo rm -rf /home/shyciii/go
 sudo chown -R shyciii:users /home/shyciii/
 
 # Céges VPN beállítása
-sudo nmcli connection import type openvpn file /home/Data/_TMVPN/TelemediaOVPN.ovpn
+#sudo nmcli connection import type openvpn file /home/Data/_TMVPN/TelemediaOVPN.ovpn
 cd .. && sudo rm -rf /home/archlinux
