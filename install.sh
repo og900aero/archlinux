@@ -62,10 +62,9 @@ echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
 # Parancssori billentyűzet beállítása
 echo KEYMAP=hu > /mnt/etc/vconsole.conf
 
-# Host beállítása
-echo -e "127.0.0.1  localhost\n::1  localhost\n127.0.0.1  archlinux" > /mnt/etc/hosts
+# Hosts, hostname beállítása
 echo "archlinux" > /mnt/etc/hostname
-cat <<EOF > /etc/hosts
+cat <<EOF > /mnt/etc/hosts
 127.0.0.1	localhost
 ::1		localhost
 127.0.1.1	archlinux.localdomain	archlinux
