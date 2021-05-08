@@ -24,8 +24,8 @@ systemctl start bluetooth.service
 rfkill unblock bluetooth
 systemctl --user enable pulseaudio
 pulseaudio --start
-sudo systemctl restart bluetooth
 sudo bash -c "echo AutoEnable=true >> /etc/bluetooth/main.conf"
+sudo systemctl restart bluetooth
 
 # Heti fstrim futtatásának engedélyezése (SSD Trim funkció)
 systemctl start fstrim.service
