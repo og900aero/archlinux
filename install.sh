@@ -54,7 +54,7 @@ ln -sf /mnt/usr/share/zoneinfo/Europe/Budapest /mnt/etc/localtime
 # Hardver óra beállítása
 arch-chroot /mnt hwclock --systohc
 
-# Lokális nyelvezet beállítása angolra, de magyar időformátumra
+# Lokális nyelvezet beállítása angolra
 echo "en_US.UTF-8 UTF-8" >> /mnt/etc/locale.gen
 arch-chroot /mnt locale-gen
 echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
@@ -89,7 +89,7 @@ arch-chroot /mnt swapon /swapfile
 echo "/swapfile   none  swap  defaults  0	0" >> /mnt/etc/fstab
 
 # Install Xorg, videó driverek
-arch-chroot /mnt pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encodings xorg-mkfontscale mesa xf86-video-intel xf86-video-nouveau
+arch-chroot /mnt pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encodings xorg-mkfontscale mesa xf86-video-intel intel-media-driver xf86-video-nouveau
 
 # Magyar billentyű beállítása
 cat <<EOF > /mnt/etc/X11/xorg.conf.d/00-keyboard.conf
@@ -117,7 +117,7 @@ EOF
 arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth bluez
 
 # Install fonts, home dirs etc
-arch-chroot /mnt pacman -S --noconfirm libmtp xdg-user-dirs bind wget traceroute man-db man-pages intel-media-driver pacman-contrib bash-completion android-tools awesome-terminal-fonts ttf-hack ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
+arch-chroot /mnt pacman -S --noconfirm libmtp xdg-user-dirs bind wget traceroute man-db man-pages pacman-contrib bash-completion android-tools awesome-terminal-fonts ttf-hack ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
 
 # Root jelszó beállítása
 echo "Root jelszava:"
@@ -129,9 +129,10 @@ echo "Shyciii jelszava:"
 arch-chroot /mnt passwd shyciii
 
 # Sudoers szerkesztése
-arch-chroot /mnt pacman -S --noconfirm vim
-arch-chroot /mnt visudo
-arch-chroot /mnt pacman -Rsn --noconfirm vim
+#arch-chroot /mnt pacman -S --noconfirm vim
+#arch-chroot /mnt visudo
+#arch-chroot /mnt pacman -Rsn --noconfirm vim
+arch-chroot /mnt echo 'shyciii ALL=(ALL) ALL' >> /etc/sudoers
 
 # Leklónozott telepítési scriptek másolása a home könyvtárba
 cd ..
