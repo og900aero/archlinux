@@ -13,7 +13,7 @@ timedatectl set-ntp true
 # Saját partíciók kezelése, beállítása
 #cfdisk
 #mkfs.fat -F32 /dev/sda1
-#mkfs.ext4 /dev/sda2
+mkfs.ext4 /dev/sda2
 
 # Root felcsatolása
 mount /dev/sda2 /mnt
@@ -120,11 +120,11 @@ arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetoo
 arch-chroot /mnt pacman -S --noconfirm libmtp xdg-user-dirs bind wget traceroute man-db man-pages pacman-contrib bash-completion android-tools awesome-terminal-fonts ttf-hack ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
 
 # Root jelszó beállítása
-echo "Root jelszava:"
-arch-chroot /mnt passwd root
+#echo "Root jelszava:"
+#arch-chroot /mnt passwd root
 
 # Felhasználó létrehozása, csoportokhoz hozzáadása, jelszó létrehozása
-arch-chroot /mnt useradd -m -g users -G audio,video,network,wheel,storage,lp,rfkill shyciii
+arch-chroot /mnt useradd -m -G audio,video,network,wheel,storage,lp,rfkill shyciii
 echo "Shyciii jelszava:"
 arch-chroot /mnt passwd shyciii
 
