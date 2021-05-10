@@ -22,37 +22,23 @@ mount /dev/sda2 /mnt
 mkdir -p /mnt/boot
 mount /dev/sda1 /mnt/boot
 
-# Alap rendszer telepítése
-pacstrap /mnt base base-devel linux linux-firmware intel-ucode
-
 # Saját Data könyvtár létrehozása, és felmountolása
 mkdir -p /mnt/home/Data
 mount /dev/sda3 /mnt/home/Data
 chmod 744 /mnt/home/Data
 
+# Alap rendszer telepítése
+pacstrap /mnt base base-devel linux linux-firmware intel-ucode
+
 # Fstab létrehozása, SSD.nek megfelelő értékekre cserélés
 genfstab -U /mnt >> /mnt/etc/fstab
 sed -i 's/rw/defaults/g' /mnt/etc/fstab
 
-# UEFI és systemd-s bootolás beállítása + egyedi kapcsolók hozzáadása
-arch-chroot /mnt bootctl --path=/boot install
-cat <<EOF > /mnt/boot/loader/loader.conf
-default arch
-timeout 1
-EOF
-cat <<EOF > /mnt/boot/loader/entries/arch.conf
-title    Arch Linux
-linux    /vmlinuz-linux
-initrd   /intel-ucode.img
-initrd   /initramfs-linux.img
-options  root=PARTUUID=$(blkid | grep sda2 | sed 's/\(.*\)PARTUUID="\(.*\)"$/\2/') rw quit i915.enable_guc=2 i915.enable_fbc=1 i915.fastboot=1 loglevel=3
-EOF
+# Magyar időzóna beállítása
+arch-chroot ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
 
 # Hardver óra beállítása
 arch-chroot /mnt hwclock --systohc
-
-# Magyar időzóna beállítása
-ln -sf /mnt/usr/share/zoneinfo/Europe/Budapest /mnt/etc/localtime
 
 # Lokális nyelvezet beállítása angolra
 echo "en_US.UTF-8 UTF-8" >> /mnt/etc/locale.gen
@@ -70,16 +56,26 @@ cat <<EOF > /mnt/etc/hosts
 127.0.1.1	archlinux.localdomain	archlinux
 EOF
 
-# Naplózás beállítása
-echo "MaxRetentionSec=15day" >> /mnt/etc/systemd/journald.conf
+# mkinitcpio manuális futtatás (initial ramdisk)
+arch-chroot /mnt mkinitcpio -p linux
+
+# UEFI és systemd-s bootolás beállítása + egyedi kapcsolók hozzáadása
+arch-chroot /mnt bootctl --path=/boot install
+cat <<EOF > /mnt/boot/loader/loader.conf
+default arch
+timeout 1
+EOF
+cat <<EOF > /mnt/boot/loader/entries/arch.conf
+title    Arch Linux
+linux    /vmlinuz-linux
+initrd   /intel-ucode.img
+initrd   /initramfs-linux.img
+options  root=PARTUUID=$(blkid | grep sda2 | sed 's/\(.*\)PARTUUID="\(.*\)"$/\2/') rw quit i915.enable_guc=2 i915.enable_fbc=1 i915.fastboot=1 loglevel=3
+EOF
 
 # Hálózati komponensek telepítése
 arch-chroot /mnt pacman -S --noconfirm networkmanager network-manager-applet networkmanager-openvpn
-
 arch-chroot /mnt systemctl enable NetworkManager.service
-
-# mkinitcpio manuális futtatás (initial ramdisk)
-arch-chroot /mnt mkinitcpio -p linux
 
 # Swap file létrehozása
 arch-chroot /mnt dd if=/dev/zero of=/swapfile bs=1M count=2048 status=progress
