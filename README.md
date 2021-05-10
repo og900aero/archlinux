@@ -1,9 +1,12 @@
 # Arch Linux
 Custom Arch Linux with Bspwm
 
-iwctl 
+iwctl
+
 station wlan0 get-network
+
 station wlan0 connect SSID
+
 exit
 
 pacman -Sy --noconfirm git
