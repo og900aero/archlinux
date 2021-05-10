@@ -114,6 +114,9 @@ EOF
 # Timeout beállítása
 sudo sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=10s/' /etc/systemd/system.conf
 
+sudo timedatectl set-timezone Europe/Budapest
+sudo timedatectl set-ntp true
+
 # Saját config fileok visszaállítása
 sudo cp -rv /home/Data/Linux/Backup/usr/share/themes/* /usr/share/themes/
 sudo chmod 755 -R /usr/share/themes/
