@@ -15,7 +15,7 @@ else
         echo "No change."
 fi
 
-# Data köbyvtár tulajdonosának beállítása
+# Data könyvtár tulajdonosának beállítása
 sudo chown shyciii:users /home/Data
 
 # Bluetooth és Hang üzembehelyezése
@@ -118,8 +118,6 @@ sudo timedatectl set-timezone Europe/Budapest
 sudo timedatectl set-ntp true
 
 # Saját config fileok visszaállítása
-sudo cp -rv /home/Data/Linux/Backup/usr/share/themes/* /usr/share/themes/
-sudo chmod 755 -R /usr/share/themes/
 sudo cp -rv /home/Data/Linux/Backup/etc/issue /etc/issue
 mkdir -p /home/shyciii/mnt/android /home/shyciii/mnt/ftp /home/shyciii/mnt/ssh
 tar -xvf /home/Data/Linux/Backup/home_backup.tar.zst --directory /home/shyciii
