@@ -48,11 +48,11 @@ initrd   /initramfs-linux.img
 options  root=PARTUUID=$(blkid | grep sda2 | sed 's/\(.*\)PARTUUID="\(.*\)"$/\2/') rw quit i915.enable_guc=2 i915.enable_fbc=1 i915.fastboot=1 loglevel=3
 EOF
 
-# Magyar időzóna beállítása
-ln -sf /mnt/usr/share/zoneinfo/Europe/Budapest /mnt/etc/localtime
-
 # Hardver óra beállítása
 arch-chroot /mnt hwclock --systohc
+
+# Magyar időzóna beállítása
+ln -sf /mnt/usr/share/zoneinfo/Europe/Budapest /mnt/etc/localtime
 
 # Lokális nyelvezet beállítása angolra
 echo "en_US.UTF-8 UTF-8" >> /mnt/etc/locale.gen
