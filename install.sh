@@ -114,7 +114,7 @@ EndSection
 EOF
 
 # Install Sound and Bluetooth
-arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth bluez
+arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth blueberry
 
 # Install fonts, home dirs etc
 arch-chroot /mnt pacman -S --noconfirm libmtp xdg-user-dirs bind wget traceroute man-db man-pages pacman-contrib bash-completion android-tools awesome-terminal-fonts ttf-hack ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
