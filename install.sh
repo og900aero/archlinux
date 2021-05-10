@@ -12,7 +12,7 @@ timedatectl set-ntp true
 
 # Saját partíciók kezelése, beállítása
 #cfdisk
-#mkfs.fat -F32 /dev/sda1
+mkfs.fat -F32 /dev/sda1
 mkfs.ext4 /dev/sda2
 
 # Root felcsatolása
