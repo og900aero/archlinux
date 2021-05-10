@@ -4,8 +4,8 @@
 loadkeys hu
 
 # A 10 leggyorsabb mirror szerver beállítása
-pacman -Sy --noconfirm reflector
-reflector --verbose --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
+#pacman -Sy --noconfirm reflector
+#reflector --verbose --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 # Idő szinkronizálás engedélyezése távoli idő kiszolgálóval
 timedatectl set-ntp true
@@ -138,7 +138,7 @@ arch-chroot /mnt echo '%sudo ALL=(ALL) ALL' >> /etc/sudoers
 cd ..
 cp -r archlinux/ /mnt/home/shyciii/
 
-reboot
+#reboot
 
 ###########################################################################
 #Felhasználóval kell belépni, és mehet az Install2.sh script.
