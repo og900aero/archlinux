@@ -71,6 +71,10 @@ EOF
 # Swap használatának beállítása
 sudo bash -c "echo vm.swappiness=10 > /etc/sysctl.d/99-sysctl.conf"
 
+
+# Naplózás beállítása
+sudo bash -c "echo MaxRetentionSec=15day >> /etc/systemd/journald.conf"
+
 # Notebook-hoz doube tap beállítása
 sudo bash -c "cat > /etc/X11/xorg.conf.d/40-libinput.conf" <<EOF
 Section "InputClass"
@@ -114,8 +118,8 @@ EOF
 # Timeout beállítása
 sudo sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=10s/' /etc/systemd/system.conf
 
-sudo timedatectl set-timezone Europe/Budapest
-sudo timedatectl set-ntp true
+#sudo timedatectl set-timezone Europe/Budapest
+#sudo timedatectl set-ntp true
 
 # Saját config fileok visszaállítása
 sudo cp -rv /home/Data/Linux/Backup/etc/issue /etc/issue
