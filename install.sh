@@ -120,8 +120,8 @@ arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetoo
 arch-chroot /mnt pacman -S --noconfirm libmtp xdg-user-dirs bind wget traceroute man-db man-pages pacman-contrib bash-completion android-tools awesome-terminal-fonts ttf-hack ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
 
 # Root jelszó beállítása
-echo "Root jelszava:"
-arch-chroot /mnt passwd root
+#echo "Root jelszava:"
+#arch-chroot /mnt passwd root
 
 # Felhasználó létrehozása, csoportokhoz hozzáadása, jelszó létrehozása
 arch-chroot /mnt useradd -m -G audio,video,network,wheel,storage,lp,rfkill shyciii
@@ -132,7 +132,7 @@ arch-chroot /mnt passwd shyciii
 #arch-chroot /mnt pacman -S --noconfirm vim
 #arch-chroot /mnt visudo
 #arch-chroot /mnt pacman -Rsn --noconfirm vim
-arch-chroot /mnt echo 'shyciii ALL=(ALL) ALL' >> /etc/sudoers
+echo 'shyciii ALL=(ALL) ALL' >> /mnt/etc/sudoers
 
 # Leklónozott telepítési scriptek másolása a home könyvtárba
 cd ..
