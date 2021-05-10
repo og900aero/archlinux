@@ -132,7 +132,7 @@ arch-chroot /mnt passwd shyciii
 #arch-chroot /mnt pacman -S --noconfirm vim
 #arch-chroot /mnt visudo
 #arch-chroot /mnt pacman -Rsn --noconfirm vim
-arch-chroot /mnt echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
+arch-chroot /mnt echo 'shyciii ALL=(ALL) ALL' >> /etc/sudoers
 
 # Leklónozott telepítési scriptek másolása a home könyvtárba
 cd ..
