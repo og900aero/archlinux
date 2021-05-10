@@ -48,7 +48,8 @@ cd /home/Data/Linux/Compile/st-0.8.4
 sudo make clean install
 
 # USB Driveok automountja
-sudo sh /home/Data/Linux/Compile/automount-usb/configure.sh
+cd /home/Data/Linux/Compile/automount-usb
+sudo sh configure.sh
 
 # Használaton kívűli csomagok eltávolítása
 sudo pacman -Rns --noconfirm $(pacman -Qtdq)
