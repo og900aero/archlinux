@@ -3,7 +3,7 @@
 # Magyar billentyűzet
 loadkeys hu
 
-# A 10 leggyorsabb mirror szerver beállítása
+# A 10 legfrissebb magyar szerver beállítása
 pacman -Sy --noconfirm reflector
 reflector --verbose --latest 10 -c HU --save /etc/pacman.d/mirrorlist
 
