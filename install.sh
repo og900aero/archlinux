@@ -119,26 +119,19 @@ arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetoo
 # Install fonts, home dirs etc
 arch-chroot /mnt pacman -S --noconfirm libmtp xdg-user-dirs bind wget traceroute man-db man-pages pacman-contrib bash-completion android-tools awesome-terminal-fonts ttf-hack ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
 
-# Root jelszó beállítása
-#echo "Root jelszava:"
-#arch-chroot /mnt passwd root
-
 # Felhasználó létrehozása, csoportokhoz hozzáadása, jelszó létrehozása
 arch-chroot /mnt useradd -m -G audio,video,network,wheel,storage,lp,rfkill shyciii
 echo "Shyciii jelszava:"
 arch-chroot /mnt passwd shyciii
 
 # Sudoers szerkesztése
-#arch-chroot /mnt pacman -S --noconfirm vim
-#arch-chroot /mnt visudo
-#arch-chroot /mnt pacman -Rsn --noconfirm vim
 echo 'shyciii ALL=(ALL) ALL' >> /mnt/etc/sudoers
 
 # Leklónozott telepítési scriptek másolása a home könyvtárba
 cd ..
 cp -r archlinux/ /mnt/home/shyciii/
 
-#reboot
+reboot
 
 ###########################################################################
 #Felhasználóval kell belépni, és mehet az Install2.sh script.
