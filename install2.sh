@@ -15,12 +15,13 @@ else
         echo "No change."
 fi
 
-# Data könyvtár tulajdonosának beállítása
-sudo chown shyciii:users /home/Data
+# Időzóna és ntp szerver beállítása
+sudo timedatectl set-timezone Europe/Budapest
+sudo timedatectl set-ntp true
 
 # Bluetooth és Hang üzembehelyezése
-systemctl enable bluetooth.service
-systemctl start bluetooth.service
+sudo systemctl enable bluetooth.service
+sudo systemctl start bluetooth.service
 rfkill unblock bluetooth
 systemctl --user enable pulseaudio
 pulseaudio --start
@@ -72,7 +73,6 @@ EOF
 # Swap használatának beállítása
 sudo bash -c "echo vm.swappiness=10 > /etc/sysctl.d/99-sysctl.conf"
 
-
 # Naplózás beállítása
 sudo bash -c "echo MaxRetentionSec=15day >> /etc/systemd/journald.conf"
 
@@ -119,8 +119,8 @@ EOF
 # Timeout beállítása
 sudo sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=10s/' /etc/systemd/system.conf
 
-#sudo timedatectl set-timezone Europe/Budapest
-#sudo timedatectl set-ntp true
+# Data könyvtár tulajdonosának beállítása
+sudo chown shyciii:users /home/Data
 
 # Saját config fileok visszaállítása
 sudo cp -rv /home/Data/Linux/Backup/etc/issue /etc/issue
