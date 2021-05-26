@@ -30,7 +30,7 @@ chmod 744 /mnt/home/Data
 # Alap rendszer telepítése
 pacstrap /mnt base base-devel linux linux-firmware intel-ucode
 
-# Fstab létrehozása, SSD.nek megfelelő értékekre cserélés
+# Fstab létrehozása, módosítása
 genfstab -U /mnt >> /mnt/etc/fstab
 sed -i 's/rw/defaults/g' /mnt/etc/fstab
 
