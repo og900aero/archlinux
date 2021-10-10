@@ -85,7 +85,7 @@ arch-chroot /mnt swapon /swapfile
 echo "/swapfile   none  swap  defaults  0	0" >> /mnt/etc/fstab
 
 # Install Xorg, videó driverek
-arch-chroot /mnt pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encodings xorg-mkfontscale mesa xf86-video-intel intel-media-driver xf86-video-nouveau
+arch-chroot /mnt pacman -S --noconfirm xorg-server xorg-xinit xorg-fonts-encodings xorg-mkfontscale xorg-xwd mesa xf86-video-intel intel-media-driver xf86-video-nouveau
 
 # Magyar billentyű beállítása
 cat <<EOF > /mnt/etc/X11/xorg.conf.d/00-keyboard.conf
