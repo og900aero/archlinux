@@ -32,7 +32,7 @@ sudo systemctl restart bluetooth
 systemctl start fstrim.service
 
 # Programok telepítése hivatalos repóból
-1sudo pacman -Sy --noconfirm fd imagemagick alacritty imv trash-cli xclip fuse-zip zip unzip unrar curlftpfs fzf mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst libreoffice-fresh-hu transmission-gtk gnome-calculator vifm neofetch mpv grsync htop sshfs rofi
+1sudo pacman -Sy --noconfirm fd imagemagick imv trash-cli xclip fuse-zip zip unzip unrar curlftpfs fzf mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst libreoffice-fresh-hu transmission-gtk gnome-calculator vifm neofetch mpv grsync htop sshfs rofi
 
 # Yay telepítése
 cd /home/shyciii
@@ -45,8 +45,8 @@ rm -rf /home/shyciii/yay
 yay -Syu --noconfirm --sudoloop go-mtpfs-git archivemount ttf-oswald ttf-iosevka google-chrome polybar split2flac-git subversion sacd-extract inxi-git downgrade micro
 
 # Suckless Terminal telepítése
-#cd /home/Data/Linux/Compile/st-0.8.4
-#sudo make clean install
+cd /home/Data/Linux/Compile/st-0.8.4
+sudo make clean install
 
 # USB Driveok automountja
 cd /home/Data/Linux/Compile/automount-usb
