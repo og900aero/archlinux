@@ -2,7 +2,7 @@ sudo sed -i 's/main/main contrib non-free/' /etc/apt/sources.list
 sudo sed -i 's/bullseye/testing/' /etc/apt/sources.list
 sudo apt update
 sudo apt dist-upgrade
-sudo apt install wget curl xserver-xorg xinit xserver-xorg-input-all fonts-font-asesome pulseaudio pavucontrol micro neofetch bspwm polybar rofi vifm rxvt-unicode git imv trash-cli xclip transmission-gtk
+sudo apt install wget curl xserver-xorg-video-intel xinit xserver-xorg-video-dummy xserver-xorg-input-all xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable fonts-font-asesome pulseaudio pavucontrol micro neofetch bspwm polybar rofi vifm rxvt-unicode git imv trash-cli xclip transmission-gtk
 sudo apt install exa dunst unzip unrar-free zip libreoffice htop mediainfo ffmpeg fzf subversion archivemount xsel xbacklight
 bash -c "echo "exec bspwm' > /home/shyciii/.xinitrc"
 mkdir -p /home/shyciii/.config/bspwm
