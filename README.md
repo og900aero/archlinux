@@ -1,5 +1,5 @@
 # Arch Linux
-Custom Arch Linux with Bspwm
+Custom Arch Linux with Bspwm and Systemd-boot
 
 iwctl
 
