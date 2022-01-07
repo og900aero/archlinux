@@ -32,7 +32,7 @@ sudo systemctl restart bluetooth
 systemctl start fstrim.service
 
 # Programok telepítése hivatalos repóból
-1sudo pacman -Sy --noconfirm fd imagemagick imv trash-cli xclip fuse-zip zip unzip unrar curlftpfs fzf mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst libreoffice-fresh-hu transmission-gtk gnome-calculator vifm neofetch mpv grsync htop sshfs rofi
+sudo pacman -Sy --noconfirm fd imagemagick imv trash-cli xclip fuse-zip zip unzip unrar curlftpfs fzf mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst libreoffice-fresh-hu transmission-gtk gnome-calculator vifm neofetch mpv grsync htop sshfs rofi
 
 # Yay telepítése
 cd /home/shyciii
