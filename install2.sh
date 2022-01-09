@@ -29,7 +29,8 @@ sudo bash -c "echo AutoEnable=true >> /etc/bluetooth/main.conf"
 sudo systemctl restart bluetooth
 
 # Heti fstrim futtatásának engedélyezése (SSD Trim funkció)
-systemctl start fstrim.service
+systemctl enable fstrim.timer
+systemctl start fstrim.timer
 
 # Programok telepítése hivatalos repóból
 sudo pacman -Sy --noconfirm fd imagemagick imv trash-cli xclip fuse-zip zip unzip unrar curlftpfs fzf mediainfo ueberzug bspwm sxhkd exa i3lock xautolock dunst libreoffice-fresh-hu transmission-gtk gnome-calculator vifm neofetch mpv grsync htop sshfs rofi
