@@ -28,7 +28,7 @@ mount /dev/sda3 /mnt/home/Data
 chmod 744 /mnt/home/Data
 
 # Alap rendszer telepítése
-pacstrap /mnt base base-devel linux linux-firmware intel-ucode
+pacstrap /mnt base base-devel linux linux-firmware linux-firmware-whence intel-ucode
 
 # Fstab létrehozása, módosítása
 genfstab -U /mnt >> /mnt/etc/fstab
