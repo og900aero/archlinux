@@ -113,7 +113,7 @@ EOF
 arch-chroot /mnt pacman -S --noconfirm pulseaudio pavucontrol pulseaudio-bluetooth blueman
 
 # Install fonts, home dirs etc
-arch-chroot /mnt pacman -S --noconfirm libmtp xdg-user-dirs bind wget traceroute man-db man-pages pacman-contrib bash-completion android-tools awesome-terminal-fonts ttf-hack ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
+arch-chroot /mnt pacman -S --noconfirm libmtp xdg-user-dirs bind wget traceroute man-db man-pages pacman-contrib bash-completion android-tools awesome-terminal-fonts ttc-iosevka ttf-hack ttf-ubuntu-font-family ttf-roboto ttf-dejavu git ntfs-3g gnome-keyring reflector polkit-gnome
 
 # Felhasználó létrehozása, csoportokhoz hozzáadása, jelszó létrehozása
 arch-chroot /mnt useradd -m -G audio,video,network,wheel,storage,lp,rfkill shyciii
