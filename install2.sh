@@ -43,7 +43,7 @@ makepkg -si --noconfirm
 rm -rf /home/shyciii/yay
 
 # Programok telepítése AUR-ból
-yay -Syu --noconfirm --sudoloop go-mtpfs-git archivemount ttf-oswald google-chrome polybar split2flac-git subversion sacd-extract inxi-git downgrade micro
+yay -Syu --noconfirm --sudoloop go-mtpfs-git archivemount ttf-oswald google-chrome polybar split2flac subversion sacd-extract inxi-git downgrade micro
 
 # Suckless Terminal telepítése
 cd /home/Data/Linux/Compile/st-0.8.4
