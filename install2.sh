@@ -46,7 +46,7 @@ rm -rf /home/shyciii/yay
 yay -Syu --noconfirm --sudoloop go-mtpfs-git archivemount ttf-oswald google-chrome polybar split2flac sacd-extract inxi downgrade
 
 # Suckless Terminal telepítése
-cd /home/Data/Linux/Compile/st-0.8.4
+cd /home/Data/Linux/Compile/st-0.8.5
 sudo make clean install
 
 # USB Driveok automountja
